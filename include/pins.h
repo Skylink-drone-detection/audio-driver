@@ -1,6 +1,8 @@
 #ifndef PINS_H
 #define PINS_H
 
+#include <stdint.h>
+
 /* Pin Configuration */
 #define GPIO_SWITCH_CHANNEL_A ((uint_8t)17)
 #define GPIO_SWITCH_CHANNEL_B ((uint_8t)27)
