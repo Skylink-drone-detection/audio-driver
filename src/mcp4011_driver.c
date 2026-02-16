@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stddef.h>
+#include <stdbool.h>
 #include <inttypes.h>
 #include <unistd.h>
 #include <string.h>
@@ -103,7 +104,7 @@ void gpio_set(uint8_t gpio, uint8_t value){
 }
 
 // Inicjalizacja pojedynczego MCP4011
-void mcp4011_init_single(mcp4011_t *pot, uint8_t cs, uint8_t ud, float r_ab_value) {
+void mcp4011_init_single(mcp4011_t *pot, uint8_t cs, uint8_t ud, float r_ab_value){
     pot -> cs_pin = cs;
     pot -> ud_pin = ud;
     pot -> r_ab = r_ab_value;
@@ -114,7 +115,7 @@ void mcp4011_init_single(mcp4011_t *pot, uint8_t cs, uint8_t ud, float r_ab_valu
 }
 
 // Inicjalizacja wszystkich 8 potencjometrów
-void mcp4011_init_all(void) {
+void mcp4011_init_all(void){
     wiringPiSetupGpio();
     
     // Wspólne piny
@@ -127,7 +128,6 @@ void mcp4011_init_all(void) {
     }
 }
 
-// TWOJA MATEMATYKA - główna funkcja sterowania!
 void mcp4011_set_position(uint8_t pot_num, uint8_t position){
     if (pot_num >= NUM_POTS || position > 63) {
         return;
@@ -136,9 +136,8 @@ void mcp4011_set_position(uint8_t pot_num, uint8_t position){
     mcp4011_t *pot = &pots[pot_num];
     uint8_t current = pot -> current_wiper_pos;
     
-    if (current == position) return;  // Już OK
+    if (current == position) return; 
     
-    // Oblicz kroki
     uint8_t steps = (position > current) ? (position - current) : (current - position);
     
     // 1. Kierunek U/D
@@ -148,14 +147,14 @@ void mcp4011_set_position(uint8_t pot_num, uint8_t position){
     gpio_set(pot -> cs_pin, 0);
     
     // 3. INC pulses (datasheet timing)
-    for (uint8_t i = 0; i < steps; ++i){
+    for(uint8_t i = 0; i < steps; ++i){
         gpio_set(INC_GPIO, 0);   // ↓ 10μs
         usleep(10);
         gpio_set(INC_GPIO, 1);   // ↑
         usleep(10);
     }
     
-    // 4. CS HIGH (zapis!)
+    // 4. CS HIGH (zapis)
     gpio_set(pot -> cs_pin, 1);
     
     pot -> current_wiper_pos = position;
@@ -163,36 +162,34 @@ void mcp4011_set_position(uint8_t pot_num, uint8_t position){
 
 // Ustaw wszystkie na tę samą pozycję
 void mcp4011_set_all(uint8_t position){
-    for (int i = 0; i < NUM_POTS; i++){
+    for(int i = 0; i < NUM_POTS; ++i){
         mcp4011_set_position(i, position);
     }
 }
 
-// TWOJA MATEMATYKA - oblicz opór wipera
+// Obliczanie oporu wipera
 float mcp4011_get_r_wiper(uint8_t pot_num){
     return WIPER_RESISTANCE(pots[pot_num].r_ab, pots[pot_num].current_wiper_pos);
 }
 
-/***********************************************************************************/
-// TEST + DEMO (bez printf)
-/***********************************************************************************/
-
-int main() {
+int main(void){
     // Inicjalizacja
     mcp4011_init_all();
     
     // Test 1: Wszystkie na MAX
     mcp4011_set_all(63);
+  
     sleep(2);
     
     // Test 2: Indywidualne pozycje
     mcp4011_set_position(0, 0);   // Pot 0 = 0%
     mcp4011_set_position(2, 63);  // Pot 2 = 100%
     mcp4011_set_position(4, 32);  // Pot 4 = 50%
+  
     sleep(3);
     
     // Demo: Sweep 0→63→0
-    while (1){
+    while(true){
         // ↑ 0→63
         for(uint8_t pos = 0; pos <= 63; pos += 4){
             mcp4011_set_all(pos);
@@ -200,7 +197,7 @@ int main() {
         }
         
         // ↓ 63→0
-        for (uint8_t pos = 63; pos > 0; pos -= 4){
+        for(uint8_t pos = 63; pos > 0; pos -= 4){
             mcp4011_set_all(pos);
             usleep(200000);
         }
