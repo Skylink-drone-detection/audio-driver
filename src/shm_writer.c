@@ -15,7 +15,7 @@ int shm_initialize(const char *shm_name, SharedBuffer **buffer_out) {
 	SharedBuffer *buffer = mmap(NULL, sizeof(SharedBuffer),
 								PROT_READ | PROT_WRITE,
 								MAP_SHARED, shm_fd, 0);
-	if (buffer = MAP_FAILED) {
+	if (buffer == MAP_FAILED) {
 		perror("[Shared Memory Writer] mmap failed");
 		return -1;
 	}
@@ -24,7 +24,6 @@ int shm_initialize(const char *shm_name, SharedBuffer **buffer_out) {
 	atomic_store(&buffer->tail, 0);
 
 	*buffer_out = buffer;
-
 
 	return 0;
 }
@@ -51,7 +50,7 @@ int shm_write(SharedBuffer *buffer, float data[ARRAY_SIZE]) {
 int shm_cleanup(const char *shm_name, SharedBuffer *buffer) {
 	if (!buffer) return -1;
 
-	munmap(ring, sizeof(SharedBuffer));
+	munmap(buffer, sizeof(SharedBuffer));
 	shm_unlink(shm_name);
 
 	return 0;
