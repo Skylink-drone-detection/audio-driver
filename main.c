@@ -1,6 +1,8 @@
 /* Entry point for the driver */
-#include <stdio.h>
-#include <stdlib.h> 
+#include "libraries.h"
+#include "pins.h"
+#include "shm_writer.h"
+#include "adc.h"
 
 int main(void){
 	// Placeholder
