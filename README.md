@@ -4,16 +4,7 @@
 *Narazie brak punktu wejściowego*
 
 Konfiguracja wymaga manualnego pobrania biblioteki WiringPi
-### 1. WiringPi (GPIO Library) mozna uzyc bcm2835.h(szybcze juz uzywane w adc)
-**Uwaga:** `sudo apt install wiringpi` **NIE DZIAŁA**
-
-### Oficjalna instalacja z Git
-```
-cd ~
-git clone https://github.com/WiringPi/WiringPi.git
-cd WiringPi
-sudo ./build
-```
+### 1. Obecnie używamy bcm2835 zamiast wiringpi i libgpio
 
 ### Sprawdzenie instalacji
 ```
