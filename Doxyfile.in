@@ -1,0 +1,127 @@
+# Doxyfile.in - Ogólna dokumentacja wszystkich plików projektu
+PROJECT_NAME           = "Audio Driver - MCP4011 + MCP3564"
+PROJECT_BRIEF          = "Kompleksowy sterownik 8x potencjometrów cyfrowych MCP4011 + 8-kanałowy ADC MCP3564 + SHM ring buffer"
+PROJECT_LOGO           = README.md
+
+# OUTPUT - różne formaty
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/docs
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+GENERATE_RTF           = NO
+GENERATE_MAN           = YES
+GENERATE_XML           = NO
+GENERATE_AUTOGEN_DEF   = YES
+
+# WSZYSTKIE pliki projektu
+INPUT                  = ./
+FILE_PATTERNS          = *.c *.h *.md *.txt
+RECURSIVE              = YES
+EXCLUDE                = build/ external/ *.bak *~
+EXCLUDE_SYMLINKS       = YES
+EXCLUDE_PATTERNS       = */build/* */external/* *.o *.a
+
+# PEŁNA EKSTRACJA - dokumentuj WSZYSTKO
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = YES
+EXTRACT_ANON_TYPES     = YES
+SHOW_INCLUDE_FILES     = YES
+SHOW_GROUPED_MEMB_INC  = YES
+FORCE_LOCAL_INCLUDES   = YES
+
+# ŹRÓDŁA + KOD
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+HTML_EXTRA_STYLESHEET  = "doxygen-awesome.css"
+INLINE_INHERITED_MEMB  = YES
+SHOW_USED_FILES        = YES
+
+# DIAGRAMY + GRAPHY
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+UML_LOOK               = YES
+DOT_NUM_THREADS        = 8
+DOT_TRANSPARENT        = YES
+DOT_PATH               = /usr/bin/dot
+
+# MODUŁOWE UGRUPOWANIE
+SHOW_NAMESPACES        = YES
+VERBATIM_HEADERS       = YES
+SHOW_SCOPE_NAMES       = YES
+HIDE_SCOPE_NAMES       = NO
+
+# LISTY + INDEKSY
+ALPHABETICAL_INDEX     = YES
+COLONCLOUD_SORT_ALPHABETICAL = YES
+GENERATE_TREEVIEW      = YES
+GENERATE_LEGEND        = YES
+GENERATE_TODOLIST      = YES
+GENERATE_TESTLIST      = YES
+GENERATE_BUGLIST       = YES
+
+# SEARCH + NAVIGACJA
+SEARCHENGINE           = YES
+SEARCHENGINE_URL       = ""
+SEARCHENGINE_PATH      = ""
+SERVER_BASED_SEARCH    = NO
+
+# LA TeX/PDF
+LATEX_BATCHMODE        = SMART
+LATEX_CMD_NAME         = pdflatex
+MAKEINDEX_CMD_NAME     = makeindex
+LATEX_MAKEINDEX_CMD    = makeindex
+COMPACT_LATEX          = NO
+
+# PROJECT INFO
+PROJECT_NUMBER         = "1.0"
+USE_MDFILE_AS_MAINPAGE = README.md
+QUIET                  = NO
+WARN_AS_ERROR          = NO
+
+# JĘZYK + FORMATOWANIE
+OUTPUT_LANGUAGE        = Polish
+MARKDOWN_SUPPORT       = YES
+TOC_INCLUDE_HEADINGS   = 8
+AUTOLINK_SUPPORT       = YES
+BUILTIN_STL_SUPPORT    = NO
+CPP_CLI_SUPPORT        = NO
+SIP_SUPPORT            = NO
+IDL_PROPERTY_SUPPORT   = NO
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+SHOW_DIRECTORIES       = YES
+BRIEF_MEMBER_DESC      = YES
+ALWAYS_DETAILED_SECT   = NO
+INLINE_INFO            = YES
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = NO
+SORT_GROUP_NAMES       = NO
+SORT_BY_SCOPE_NAME     = NO
+
+# LAYOUT
+TREEVIEW_USE_OLD_DOT   = NO
+FULL_PATH_NAMES        = NO
+STRIP_FROM_PATH        = .
+SHORT_NAMES            = NO
+JAVADOC_AUTOBRIEF      = YES
+JAVADOC_BANNER         = NO
+QT_AUTOBRIEF           = NO
+MULTILINE_CPP_IS_BRIEF = NO
+INHERIT_DOCS           = YES
+SEPARATE_MEMBER_PAGES  = NO
+TAB_SIZE               = 4
+ALIASES                = "sideeffect=(\par Side Effects:\n)"
+OPTIMIZE_OUTPUT_VHDL   = NO
+OPTIMIZE_OUTPUT_SLICE  = NO
+OPTIMIZE_OUTPUT_VERILOG= NO
+OPTIMIZE_FOR_FORTRAN   = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+EXTENSION_MAP
