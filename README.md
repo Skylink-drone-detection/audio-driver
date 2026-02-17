@@ -4,12 +4,8 @@
 *Narazie brak punktu wejściowego*
 
 Konfiguracja wymaga manualnego pobrania biblioteki WiringPi
-### 1. Obecnie używamy bcm2835 zamiast wiringpi i libgpio
+### Obecnie używamy bcm2835
 
-### Sprawdzenie instalacji
-```
-gpio -v
-```
 ## Dokumentacja
 Projekt składa się z punktu wejściowego **main.c**
 oraz modułów zawartych w katalogach include z implementacją w src.
