@@ -11,7 +11,7 @@ set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(SRC_FILES
     src/mcp4011_driver.c
     src/shm_writer.c
-    src/switch_logic.c
+    #src/switch_logic.c - not working
 )
 
 # Main executable
