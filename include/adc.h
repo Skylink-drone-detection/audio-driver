@@ -132,7 +132,7 @@ void init_mcp3564() {
 
     // 4. Set continuous conversion mode, gain=1, speed 102.4 kHz
     //    Value 0x85: MODE=10 (continuous), GAIN=000, SPEED=101
-    write_reg(REG_ADCCONFIG, 0x85);
+    write_reg(REG_ADCCONFIG, 0x85); // 0x86 faster but unsafe
 
 }
 
