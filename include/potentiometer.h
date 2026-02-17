@@ -91,7 +91,7 @@ typedef struct {
 } mcp4011_t;
 
 // Stan 8 potencjometrów
-static mcp4011_t pots[NUM_POTS];
+(void) static mcp4011_t pots[NUM_POTS];
 
 // GPIO helpers - ZMIENIONE na bcm2835
 void gpio_set(uint8_t gpio, uint8_t value);
