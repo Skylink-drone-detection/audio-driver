@@ -1,9 +1,10 @@
 /* Entry point for the driver */
 #include <stdio.h>
+#include <stdlib.h> 
 
-int main(void) {
+int main(void){
 	// Placeholder
 	
-	return 0;
+	return EXIT_SUCCESS;
 }
 

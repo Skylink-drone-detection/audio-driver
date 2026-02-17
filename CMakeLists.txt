@@ -14,9 +14,18 @@ set(SRC_FILES
     #src/switch_logic.c - not working
 )
 
+include(FetchContent)
+FetchContent_Declare(
+    wiringpi
+    GIT_REPOSITORY https://github.com/WiringPi/WiringPi.git
+    GIT_TAG main
+)
+FetchContent_MakeAvailable(wiringpi)
+
 # Main executable
 add_executable(main main.c ${SRC_FILES})
 target_include_directories(main PRIVATE ${INCLUDE_DIR})
+target_link_libraries(main PRIVATE wiringpi pthread)
 
 # Tests (Using CTest)
 enable_testing()

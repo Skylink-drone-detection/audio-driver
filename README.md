@@ -31,3 +31,9 @@ Wykorzystywana jest pamięć dzielona RAM (shared memory) w celu
 szybkiego zapisu informacji.
 Dane są umieszczane przez proces pobierający w buforze pierścieniowym
 w indeksie `head`.
+
+### Biblioteka bcm28355
+sudo apt update
+sudo apt install libbcm2835-dev  # Dla MCP3564
+sudo apt install cmake build-essential git
+
