@@ -11,7 +11,7 @@ int main(void) {
 	SharedBuffer *buffer = NULL;
 
 	printf("Initializing shared memory buffer.\n");
-	if (shm_initialize(SHM_NAME, &buffer) != 0) {
+	if (shm_initialize(TEST_SHM_NAME, &buffer) != 0) {
 		fprintf(stderr, "Failed to initialize shared memory buffer\n");
 		return 1;
 	}
