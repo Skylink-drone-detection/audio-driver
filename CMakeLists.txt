@@ -41,22 +41,24 @@ target_include_directories(shm_writer_test PRIVATE ${INCLUDE_DIR} ${BCM2835_INCL
 target_link_libraries(shm_writer_test PRIVATE ${BCM2835_LIB} pthread m rt)
 add_test(NAME SHMTest COMMAND shm_writer_test)
 
-# DOXYGEN
+# ===== DOXYGEN =====
 find_package(Doxygen COMPONENTS dot)
 if(DOXYGEN_FOUND)
-    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
-    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+    set(DOXYFILE_IN  ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
+    set(DOXYFILE_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 
-    # Konfiguracja Doxygen
-    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
-    message("Doxygen build started")
-
-    # HTML + LaTeX
-    add_custom_target(doc_doxygen
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+    # Konfiguruj Doxyfile
+    configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
+    
+    # Target 'doc'
+    add_custom_target(doc
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Generating API documentation with Doxygen"
+        COMMENT "📚 Generating documentation (HTML + LaTeX)..."
         VERBATIM
     )
+    message(STATUS "✅ Doxygen: make doc")
+else()
+    message(WARNING "Doxygen NOT FOUND. Install: sudo apt install doxygen graphviz")
 endif()
 

@@ -1,127 +1,272 @@
-# Doxyfile.in - Ogólna dokumentacja wszystkich plików projektu
-PROJECT_NAME           = "Audio Driver - MCP4011 + MCP3564"
-PROJECT_BRIEF          = "Kompleksowy sterownik 8x potencjometrów cyfrowych MCP4011 + 8-kanałowy ADC MCP3564 + SHM ring buffer"
-PROJECT_LOGO           = README.md
+#! /usr/bin/env bash
+# Doxyfile.in - PROFESSIONALNA DOKUMENTACJA C/C++ PROJECT
+# HTML + PDF + DIAGRAMY + ŹRÓDŁA INLINE + SEARCH
+# Kompatybilny Doxygen 1.9.8+
 
-# OUTPUT - różne formaty
-OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/docs
-GENERATE_HTML          = YES
-HTML_OUTPUT            = html
-GENERATE_LATEX         = YES
-LATEX_OUTPUT           = latex
-GENERATE_RTF           = NO
-GENERATE_MAN           = YES
-GENERATE_XML           = NO
-GENERATE_AUTOGEN_DEF   = YES
+# ==================================================
+# PROJEKT & METADANE
+# ==================================================
+PROJECT_NAME           = "Audio Driver MCP4011 + MCP3564"
+PROJECT_NUMBER         = "1.0"
+PROJECT_BRIEF          = "8x Digital Potentiometers + 8ch ADC + SHM Ring Buffer"
+PROJECT_LOGO           = 
 
-# WSZYSTKIE pliki projektu
-INPUT                  = ./
-FILE_PATTERNS          = *.c *.h *.md *.txt
+# ==================================================
+# ŚCIEŻKI - Z KATALOGU BUILD/
+# ==================================================
+INPUT                  = ../src/ ../include/ ../main.c ../tests/
+INPUT_ENCODING         = UTF-8
+INPUT_FILTER           = 
+FILE_PATTERNS          = *.c *.h *.cpp *.hpp *.md *.txt
 RECURSIVE              = YES
-EXCLUDE                = build/ external/ *.bak *~
+EXCLUDE                = ../build/* ../docs/* *.o *.a *.so
 EXCLUDE_SYMLINKS       = YES
-EXCLUDE_PATTERNS       = */build/* */external/* *.o *.a
+EXCLUDE_PATTERNS       = 
 
-# PEŁNA EKSTRACJA - dokumentuj WSZYSTKO
+# ==================================================
+# PEŁNA EKSTRACJA - DOKUMENTUJ WSZYSTKO
+# ==================================================
 EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = YES
+EXTRACT_PACKAGE        = YES
 EXTRACT_STATIC         = YES
 EXTRACT_LOCAL_CLASSES  = YES
 EXTRACT_LOCAL_METHODS  = YES
-EXTRACT_ANON_TYPES     = YES
+EXTRACT_ANON_TYPES     = NO
 SHOW_INCLUDE_FILES     = YES
 SHOW_GROUPED_MEMB_INC  = YES
-FORCE_LOCAL_INCLUDES   = YES
-
-# ŹRÓDŁA + KOD
-SOURCE_BROWSER         = YES
-INLINE_SOURCES         = YES
-HTML_EXTRA_STYLESHEET  = "doxygen-awesome.css"
-INLINE_INHERITED_MEMB  = YES
+FORCE_LOCAL_INCLUDES   = NO
 SHOW_USED_FILES        = YES
+SHOW_DIRECTORIES       = YES
+DIAG_SORTED_BY_SCOPE   = NO
 
-# DIAGRAMY + GRAPHY
-HAVE_DOT               = YES
-CLASS_DIAGRAMS         = YES
-CALL_GRAPH             = YES
-CALLER_GRAPH           = YES
-COLLABORATION_GRAPH    = YES
-GROUP_GRAPHS           = YES
-UML_LOOK               = YES
-DOT_NUM_THREADS        = 8
-DOT_TRANSPARENT        = YES
-DOT_PATH               = /usr/bin/dot
-
-# MODUŁOWE UGRUPOWANIE
-SHOW_NAMESPACES        = YES
-VERBATIM_HEADERS       = YES
-SHOW_SCOPE_NAMES       = YES
-HIDE_SCOPE_NAMES       = NO
-
-# LISTY + INDEKSY
-ALPHABETICAL_INDEX     = YES
-COLONCLOUD_SORT_ALPHABETICAL = YES
+# ==================================================
+# HTML - GŁÓWNY WYNIK
+# ==================================================
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_HEADER            = 
+HTML_FOOTER            = 
+HTML_STYLESHEET        = 
+HTML_EXTRA_STYLESHEET  = 
+HTML_EXTRA_FILES       = 
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_TIMESTAMP         = NO
+HTML_DYNAMIC_SECTIONS  = YES
+HTML_DYNAMIC_MENUS     = YES
 GENERATE_TREEVIEW      = YES
-GENERATE_LEGEND        = YES
-GENERATE_TODOLIST      = YES
-GENERATE_TESTLIST      = YES
-GENERATE_BUGLIST       = YES
-
-# SEARCH + NAVIGACJA
+TREEVIEW_WIDTH         = 250
+EXT_LINKS_IN_WINDOW    = NO
+FORMULA_FONTSIZE       = 10
+FORMULA_TRANSPARENT    = YES
+USE_MATHJAX            = NO
+MATHJAX_FORMAT         = HTML-CSS
+MATHJAX_RELPATH        = 
+MATHJAX_EXTENSIONS     = 
+MATHJAX_CODEFILE       = 
 SEARCHENGINE           = YES
-SEARCHENGINE_URL       = ""
-SEARCHENGINE_PATH      = ""
 SERVER_BASED_SEARCH    = NO
+SEARCHENGINE_URL       = 
+SEARCHENGINE_PATH      = 
+SEARCHENGINE_FILE      = 
+USE_EXTERNAL_GROUPS    = YES
+EXTERNAL_GROUPS        = 
+EXTERNAL_GROUP_ID      = 
+GENERATE_DOCSET        = NO
+DOCSET_FEEDNAME        = "Doxygen generated docs"
+DOCSET_FEEDAUTHOR      = 
+DOCSET_FEEDPUBLISHER   = 
+DOCSET_BUNDLE_ID       = org.doxygen.Example
+DOCSET_PUBLISHER_ID    = org.doxygen
+DOCSET_PUBLISHER_NAME  = 
+GENERATE_ECLIPSEHELP   = NO
+ECLIPSE_DOC_ID         = org.doxygen.Project
+DISABLE_INDEX_HOUR     = NO
+DISABLE_INDEX_MINUTE   = NO
+GENERATE_XML           = NO
+XML_OUTPUT             = xml
+XML_SCHEMA             = 
+XML_DTD                = 
+XML_PROGRAMLISTING     = YES
+XML_NS_MEMB_FILE_SCOPE = NO
 
-# LA TeX/PDF
-LATEX_BATCHMODE        = SMART
+# ==================================================
+# LaTeX / PDF
+# ==================================================
+GENERATE_LATEX         = YES
+LATEX_OUTPUT           = latex
+LATEX_BATCHMODE        = NO
+LATEX_HIDE_INDICES     = NO
+LATEX_SOURCE_CODE      = YES
+LATEX_BIB_STYLE        = 
+LATEX_TIMESTAMP        = NO
 LATEX_CMD_NAME         = pdflatex
 MAKEINDEX_CMD_NAME     = makeindex
 LATEX_MAKEINDEX_CMD    = makeindex
 COMPACT_LATEX          = NO
+PAPER_TYPE             = a4
+EXTRA_PACKAGES         = 
+LATEX_HEADER           = 
+PDF_HYPERLINKS         = YES
+USE_PDFLATEX           = YES
+LATEX_POST             = 
 
-# PROJECT INFO
-PROJECT_NUMBER         = "1.0"
-USE_MDFILE_AS_MAINPAGE = README.md
-QUIET                  = NO
-WARN_AS_ERROR          = NO
+# ==================================================
+# RTF
+# ==================================================
+GENERATE_RTF           = NO
+RTF_OUTPUT             = rtf
+COMPACT_RTF            = NO
+RTF_HYPERLINKS         = NO
+RTF_STYLESHEET_FILE    = 
+RTF_EXTENSIONS_FILE    = 
+RTFCONV_CMD            = 
 
-# JĘZYK + FORMATOWANIE
-OUTPUT_LANGUAGE        = Polish
-MARKDOWN_SUPPORT       = YES
-TOC_INCLUDE_HEADINGS   = 8
-AUTOLINK_SUPPORT       = YES
-BUILTIN_STL_SUPPORT    = NO
-CPP_CLI_SUPPORT        = NO
-SIP_SUPPORT            = NO
-IDL_PROPERTY_SUPPORT   = NO
-SHOW_FILES             = YES
-SHOW_NAMESPACES        = YES
-SHOW_DIRECTORIES       = YES
+# ==================================================
+# MAN PAGES
+# ==================================================
+GENERATE_MAN           = NO
+MAN_OUTPUT             = man
+MAN_EXTENSION          = .3
+MAN_SUBDIR             = 
+MAN_LINKS              = NO
+
+# ==================================================
+# DIAGRAMY I GRAPHY
+# ==================================================
+HAVE_DOT               = YES
+DOT_NUM_THREADS        = 0
+DOT_FONTNAME           = FreeSans
+DOT_FONTSIZE           = 10
+DOT_FONTPATH           = 
+CLASS_DIAGRAMS         = YES
+MSCGEN_PROGRAM         = 
+DIA_PROGRAM            = 
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+HIDE_FRIEND_COMPOUNDS  = NO
+HIDE_IN_BODY_DOCS      = NO
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+CALL_GRAPH_MAX_DEPTH   = 50
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+UML_LOOK               = YES
+UML_LIMIT_NUM_FIELDS   = 10
+TEMPLATE_RELATIONS     = NO
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+DISTRIBUTE_GROUP_DOC   = NO
+DIR_RELATION_DEPTH     = 1
+DOT_TRANSPARENT        = NO
+DOT_MULTI_TARGETS      = NO
+GENERATE_LEGEND        = YES
+DOT_CLEANUP            = YES
+DOT_PATH               = 
+DOTFILE_DIRS           = 
+MSCFILE_DIRS           = 
+DIAFILE_DIRS           = 
+PLANTUML_JAR_PATH      = 
+PLANTUML_CFG_FILE      = 
+PLANTUML_INCLUDE_PATH  = 
+
+# ==================================================
+# JĘZYK I CODING
+# ==================================================
+OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ABBREVIATE_BRIEF       = "The $name class" "The $name widget" \
+                          "The $name file" is "provides" the \
+                          "specifies" "references" "leftovers"
 ALWAYS_DETAILED_SECT   = NO
-INLINE_INFO            = YES
-SORT_MEMBER_DOCS       = YES
-SORT_BRIEF_DOCS        = NO
-SORT_GROUP_NAMES       = NO
-SORT_BY_SCOPE_NAME     = NO
-
-# LAYOUT
-TREEVIEW_USE_OLD_DOT   = NO
-FULL_PATH_NAMES        = NO
-STRIP_FROM_PATH        = .
+INLINE_INHERITED_MEMB  = YES
+FULL_PATH_NAMES        = YES
+STRIP_FROM_PATH        = ../
 SHORT_NAMES            = NO
 JAVADOC_AUTOBRIEF      = YES
-JAVADOC_BANNER         = NO
+JAVADOC_BANNER         = YES
 QT_AUTOBRIEF           = NO
 MULTILINE_CPP_IS_BRIEF = NO
 INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 4
-ALIASES                = "sideeffect=(\par Side Effects:\n)"
+ALIASES                = 
 OPTIMIZE_OUTPUT_VHDL   = NO
 OPTIMIZE_OUTPUT_SLICE  = NO
-OPTIMIZE_OUTPUT_VERILOG= NO
+OPTIMIZE_OUTPUT_VERILOG = NO
 OPTIMIZE_FOR_FORTRAN   = NO
+OPTIMIZE_FOR_C         = YES
 OPTIMIZE_OUTPUT_JAVA   = NO
-EXTENSION_MAP
+EXTENSION_MAPPING      = 
+MARKDOWN_SUPPORT       = YES
+TOC_INCLUDE_HEADINGS   = 0
+AUTOLINK_SUPPORT       = YES
+BUILTIN_STL_SUPPORT    = NO
+CPP_CLI_SUPPORT        = NO
+SIP_SUPPORT            = NO
+IDL_PROPERTY_SUPPORT   = NO
+
+# ==================================================
+# ŹRÓDŁA I KOD
+# ==================================================
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+STRIP_CODE_COMMENTS    = YES
+REFERENCED_BY_RELATION = NO
+REFERENCES_RELATION    = NO
+REFERENCES_LINK_SOURCE = YES
+SOURCE_TOOLTIPS        = YES
+USE_HTAGS              = NO
+VERBATIM_HEADERS       = YES
+ALPHABETICAL_INDEX     = YES
+COLONCLOUD_SORT_ALPHABETICAL = YES
+HIDE_COMPOUND_REFERENCE= NO
+SHOW_NAMESPACES        = YES
+SHOW_SCOPE_NAMES       = YES
+HIDE_SCOPE_NAMES       = NO
+SHOW_FULL_NAME         = YES
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = NO
+SORT_GROUP_NAMES       = NO
+SORT_BY_SCOPE_NAME     = NO
+
+# ==================================================
+# LISTY I INDEKSY
+# ==================================================
+GENERATE_TODOLIST      = YES
+GENERATE_TESTLIST      = YES
+GENERATE_BUGLIST       = YES
+GENERATE_DEPRECATEDLIST= YES
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = NO
+EXPAND_ONLY_PREDEF     = NO
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           = 
+INCLUDE_FILE_PATTERNS  = 
+PREDEFINED             = 
+EXPAND_AS_DEFINED      = 
+SKIP_FUNCTION_MACROS   = YES
+
+# ==================================================
+# WARN
+# ==================================================
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_IF_INCOMPLETE_DOC = YES
+WARN_NO_PARAMDOC       = NO
+WARN_AS_ERROR          = NO
+MAX_DOT_GRAPH_DEPTH    = 0
+MAX_DOT_GRAPH_WIDTH    = 0
+MAX_DOT_GRAPH_MAP      = 0
+
+# ==================================================
+# LAYOUT
+# ==================================================
+QUIET                  = NO
+WARNING_ONLY           = NO
+WARN_LOGFILE           = 
+
