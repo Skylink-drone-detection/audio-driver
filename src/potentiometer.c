@@ -1,5 +1,14 @@
 #include "potentiometer.h"
 
+// Definicje stałych (brakujące)
+#define NUM_POTS 8
+#define CS_GPIO  4
+#define INC_GPIO 17
+#define UD_BASE  24
+
+// Globalna tablica potencjometrów (przeniesiona z .h)
+static mcp4011_t pots[NUM_POTS];
+
 // GPIO helpers - ZMIENIONE na bcm2835
 void gpio_set(uint8_t gpio, uint8_t value){
     bcm2835_gpio_fsel(gpio, BCM2835_GPIO_FSEL_OUTP);

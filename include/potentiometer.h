@@ -78,11 +78,6 @@ enum pins : uint8_t {
 
 /****************************************************************************/
 
-#define NUM_POTS 8
-#define CS_GPIO  4       // GPIO4 = CS (wspólny)
-#define INC_GPIO 17      // GPIO17 = INC (wspólny)
-#define UD_BASE  24      // GPIO24-31 = U/D 0-7
-
 typedef struct {
     uint8_t cs_pin;
     uint8_t ud_pin;
@@ -90,8 +85,6 @@ typedef struct {
     float r_ab;                 // wartość R_AB
 } mcp4011_t;
 
-// Stan 8 potencjometrów
-(void) static mcp4011_t pots[NUM_POTS];
 
 // GPIO helpers - ZMIENIONE na bcm2835
 void gpio_set(uint8_t gpio, uint8_t value);

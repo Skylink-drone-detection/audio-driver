@@ -37,3 +37,9 @@ sudo apt update
 sudo apt install libbcm2835-dev  # Dla MCP3564
 sudo apt install cmake build-essential git
 
+### Lokalna kompilacja
+cd build
+rm -rf *
+cmake ..
+make -j4
+
