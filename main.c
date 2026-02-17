@@ -3,6 +3,8 @@
 #include "pins.h"
 #include "shm_writer.h"
 #include "adc.h"
+#include "potentiometer.h"
+#include "switch_logic.h"
 
 int main(void){
 

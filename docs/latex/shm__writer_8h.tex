@@ -1,0 +1,185 @@
+\doxysection{/home/raven/studies/skylink\+\_\+spi/potentiometers/audio-\/driver/include/shm\+\_\+writer.h File Reference}
+\hypertarget{shm__writer_8h}{}\label{shm__writer_8h}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/shm\_writer.h@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/shm\_writer.h}}
+{\ttfamily \#include "{}libraries.\+h"{}}\newline
+{\ttfamily \#include "{}pins.\+h"{}}\newline
+Include dependency graph for shm\+\_\+writer.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shm__writer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{shm__writer_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{shm__writer_8h_a86393b21e6f74e9870d92149e7fe7f20}{SHM\+\_\+\+NAME}}~("{}/mic\+\_\+ring\+\_\+buffer"{})
+\item 
+\#define \mbox{\hyperlink{shm__writer_8h_a9cd77b2c1b0a995d2c8eb445db490d2c}{WRITE\+\_\+\+FREQ}}~(8000)
+\item 
+\#define \mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~(800)
+\item 
+\#define \mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\+\_\+\+SIZE}}~(8)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{shm__writer_8h_a88c2fc0c7f563a836ce699e633466caa}{shm\+\_\+initialize}} (const char \texorpdfstring{$\ast$}{*}shm\+\_\+name, \mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}buffer\+\_\+out)
+\item 
+int \mbox{\hyperlink{shm__writer_8h_a0d5b0e8588da85d9b5fa5c2b600374a3}{shm\+\_\+write}} (\mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}} \texorpdfstring{$\ast$}{*}buffer, float data\mbox{[}\mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\+\_\+\+SIZE}}\mbox{]})
+\item 
+int \mbox{\hyperlink{shm__writer_8h_aabb9056702079a66f4e9bb89256d964c}{shm\+\_\+cleanup}} (const char \texorpdfstring{$\ast$}{*}shm\+\_\+name, \mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}} \texorpdfstring{$\ast$}{*}buffer)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}\label{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa} 
+\index{shm\_writer.h@{shm\_writer.h}!ARRAY\_SIZE@{ARRAY\_SIZE}}
+\index{ARRAY\_SIZE@{ARRAY\_SIZE}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{ARRAY\_SIZE}{ARRAY\_SIZE}}
+{\footnotesize\ttfamily \#define ARRAY\+\_\+\+SIZE~(8)}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8h_source_l00014}{14}} of file \mbox{\hyperlink{shm__writer_8h_source}{shm\+\_\+writer.\+h}}.
+
+\Hypertarget{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}\label{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7} 
+\index{shm\_writer.h@{shm\_writer.h}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define BUFFER\+\_\+\+SIZE~(800)}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8h_source_l00013}{13}} of file \mbox{\hyperlink{shm__writer_8h_source}{shm\+\_\+writer.\+h}}.
+
+\Hypertarget{shm__writer_8h_a86393b21e6f74e9870d92149e7fe7f20}\label{shm__writer_8h_a86393b21e6f74e9870d92149e7fe7f20} 
+\index{shm\_writer.h@{shm\_writer.h}!SHM\_NAME@{SHM\_NAME}}
+\index{SHM\_NAME@{SHM\_NAME}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{SHM\_NAME}{SHM\_NAME}}
+{\footnotesize\ttfamily \#define SHM\+\_\+\+NAME~("{}/mic\+\_\+ring\+\_\+buffer"{})}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8h_source_l00011}{11}} of file \mbox{\hyperlink{shm__writer_8h_source}{shm\+\_\+writer.\+h}}.
+
+\Hypertarget{shm__writer_8h_a9cd77b2c1b0a995d2c8eb445db490d2c}\label{shm__writer_8h_a9cd77b2c1b0a995d2c8eb445db490d2c} 
+\index{shm\_writer.h@{shm\_writer.h}!WRITE\_FREQ@{WRITE\_FREQ}}
+\index{WRITE\_FREQ@{WRITE\_FREQ}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_FREQ}{WRITE\_FREQ}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+FREQ~(8000)}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8h_source_l00012}{12}} of file \mbox{\hyperlink{shm__writer_8h_source}{shm\+\_\+writer.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{shm__writer_8h_aabb9056702079a66f4e9bb89256d964c}\label{shm__writer_8h_aabb9056702079a66f4e9bb89256d964c} 
+\index{shm\_writer.h@{shm\_writer.h}!shm\_cleanup@{shm\_cleanup}}
+\index{shm\_cleanup@{shm\_cleanup}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{shm\_cleanup()}{shm\_cleanup()}}
+{\footnotesize\ttfamily int shm\+\_\+cleanup (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{shm\+\_\+name,  }\item[{\mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}} \texorpdfstring{$\ast$}{*}}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8c_source_l00049}{49}} of file \mbox{\hyperlink{shm__writer_8c_source}{shm\+\_\+writer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}(!buffer)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ munmap(buffer,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}));}
+\DoxyCodeLine{00053\ \ \ \ \ shm\_unlink(shm\_name);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}
+\Hypertarget{shm__writer_8h_a88c2fc0c7f563a836ce699e633466caa}\label{shm__writer_8h_a88c2fc0c7f563a836ce699e633466caa} 
+\index{shm\_writer.h@{shm\_writer.h}!shm\_initialize@{shm\_initialize}}
+\index{shm\_initialize@{shm\_initialize}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{shm\_initialize()}{shm\_initialize()}}
+{\footnotesize\ttfamily int shm\+\_\+initialize (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{shm\+\_\+name,  }\item[{\mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{buffer\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8c_source_l00003}{3}} of file \mbox{\hyperlink{shm__writer_8c_source}{shm\+\_\+writer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{keywordtype}{int}\ shm\_fd\ =\ shm\_open(shm\_name,\ O\_CREAT\ |\ O\_RDWR,\ 0666);}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keywordflow}{if}(shm\_fd\ ==\ -\/1)\{}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}[Shared\ Memory\ Writer]\ shm\_open\ failed"{}});}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00008\ \ \ \ \ \}}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{if}(ftruncate(shm\_fd,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}))\ ==\ -\/1)\{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}[Shared\ Memory\ Writer]\ ftruncate\ failed"{}});}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00012\ \ \ \ \ \}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ *buffer\ =\ mmap(NULL,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}),}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROT\_READ\ |\ PROT\_WRITE,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MAP\_SHARED,\ shm\_fd,\ 0);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{if}(buffer\ ==\ MAP\_FAILED)\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}[Shared\ Memory\ Writer]\ mmap\ failed"{}});}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ atomic\_store(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}},\ 0);}
+\DoxyCodeLine{00023\ \ \ \ \ atomic\_store(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}},\ 0);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ *buffer\_out\ =\ buffer;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\Hypertarget{shm__writer_8h_a0d5b0e8588da85d9b5fa5c2b600374a3}\label{shm__writer_8h_a0d5b0e8588da85d9b5fa5c2b600374a3} 
+\index{shm\_writer.h@{shm\_writer.h}!shm\_write@{shm\_write}}
+\index{shm\_write@{shm\_write}!shm\_writer.h@{shm\_writer.h}}
+\doxysubsubsection{\texorpdfstring{shm\_write()}{shm\_write()}}
+{\footnotesize\ttfamily int shm\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSharedBuffer}{Shared\+Buffer}} \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{float}]{data\mbox{[}\+ARRAY\+\_\+\+SIZE\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{shm__writer_8c_source_l00030}{30}} of file \mbox{\hyperlink{shm__writer_8c_source}{shm\+\_\+writer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}(!buffer\ ||\ !data)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ uint32\_t\ head\ =\ atomic\_load\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}},\ memory\_order\_relaxed);}
+\DoxyCodeLine{00034\ \ \ \ \ uint32\_t\ tail\ =\ atomic\_load\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}},\ memory\_order\_acquire);}
+\DoxyCodeLine{00035\ \ \ \ \ uint32\_t\ next\ =\ (head\ +\ 1)\ \%\ \mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{if}(next\ ==\ tail)\{\ \textcolor{comment}{//\ drop\ oldest\ if\ buffer\ is\ full}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ atomic\_store\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}},\ (tail\ +\ 1)\ \%\ \mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}},\ memory\_order\_release);}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ memcpy(buffer-\/>\mbox{\hyperlink{structSharedBuffer_a2df5f74ae2279d3429d47fa783c7021b}{data}}[head],\ data,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})\ *\ \mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\_SIZE}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ atomic\_thread\_fence(memory\_order\_release);}
+\DoxyCodeLine{00044\ \ \ \ \ atomic\_store\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}},\ next,\ memory\_order\_release);}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}

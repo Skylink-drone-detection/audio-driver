@@ -1,0 +1,283 @@
+\doxysection{/home/raven/studies/skylink\+\_\+spi/potentiometers/audio-\/driver/src/potentiometer.c File Reference}
+\hypertarget{potentiometer_8c}{}\label{potentiometer_8c}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/src/potentiometer.c@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/src/potentiometer.c}}
+{\ttfamily \#include "{}potentiometer.\+h"{}}\newline
+Include dependency graph for potentiometer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{potentiometer_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{potentiometer_8c_a103d35f985ec321828356877c4edfa35}{NUM\+\_\+\+POTS}}~8
+\item 
+\#define \mbox{\hyperlink{potentiometer_8c_a3cfc3348686a8a56aab1df67dab48ef8}{CS\+\_\+\+GPIO}}~4
+\item 
+\#define \mbox{\hyperlink{potentiometer_8c_a37a1aa0a3b2d923a963ed05415e87d3e}{INC\+\_\+\+GPIO}}~17
+\item 
+\#define \mbox{\hyperlink{potentiometer_8c_a888e0c7041726e707e7cf03d68737f07}{UD\+\_\+\+BASE}}~24
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\+\_\+set}} (uint8\+\_\+t gpio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{potentiometer_8c_a2df2100a5e2a92afbf7264c32741358e}{mcp4011\+\_\+init\+\_\+single}} (\mbox{\hyperlink{structmcp4011__t}{mcp4011\+\_\+t}} \texorpdfstring{$\ast$}{*}pot, uint8\+\_\+t cs, uint8\+\_\+t ud, float r\+\_\+ab\+\_\+value)
+\item 
+void \mbox{\hyperlink{potentiometer_8c_a68cfba892467fbe2d7340f0456007bc6}{mcp4011\+\_\+init\+\_\+all}} (void)
+\item 
+void \mbox{\hyperlink{potentiometer_8c_ac928c7b9fe64b80b6b7cc962fd71b7da}{mcp4011\+\_\+set\+\_\+position}} (uint8\+\_\+t pot\+\_\+num, uint8\+\_\+t position)
+\item 
+void \mbox{\hyperlink{potentiometer_8c_a1705b37d198b8f408151387165e51acd}{mcp4011\+\_\+set\+\_\+all}} (uint8\+\_\+t position)
+\item 
+float \mbox{\hyperlink{potentiometer_8c_a73e2fdec0d1e37a2ee7ca66b4dc664a9}{mcp4011\+\_\+get\+\_\+r\+\_\+wiper}} (uint8\+\_\+t pot\+\_\+num)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structmcp4011__t}{mcp4011\+\_\+t}} \mbox{\hyperlink{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b}{pots}} \mbox{[}\mbox{\hyperlink{potentiometer_8c_a103d35f985ec321828356877c4edfa35}{NUM\+\_\+\+POTS}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{potentiometer_8c_a3cfc3348686a8a56aab1df67dab48ef8}\label{potentiometer_8c_a3cfc3348686a8a56aab1df67dab48ef8} 
+\index{potentiometer.c@{potentiometer.c}!CS\_GPIO@{CS\_GPIO}}
+\index{CS\_GPIO@{CS\_GPIO}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{CS\_GPIO}{CS\_GPIO}}
+{\footnotesize\ttfamily \#define CS\+\_\+\+GPIO~4}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00005}{5}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+\Hypertarget{potentiometer_8c_a37a1aa0a3b2d923a963ed05415e87d3e}\label{potentiometer_8c_a37a1aa0a3b2d923a963ed05415e87d3e} 
+\index{potentiometer.c@{potentiometer.c}!INC\_GPIO@{INC\_GPIO}}
+\index{INC\_GPIO@{INC\_GPIO}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{INC\_GPIO}{INC\_GPIO}}
+{\footnotesize\ttfamily \#define INC\+\_\+\+GPIO~17}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00006}{6}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+\Hypertarget{potentiometer_8c_a103d35f985ec321828356877c4edfa35}\label{potentiometer_8c_a103d35f985ec321828356877c4edfa35} 
+\index{potentiometer.c@{potentiometer.c}!NUM\_POTS@{NUM\_POTS}}
+\index{NUM\_POTS@{NUM\_POTS}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{NUM\_POTS}{NUM\_POTS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+POTS~8}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00004}{4}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+\Hypertarget{potentiometer_8c_a888e0c7041726e707e7cf03d68737f07}\label{potentiometer_8c_a888e0c7041726e707e7cf03d68737f07} 
+\index{potentiometer.c@{potentiometer.c}!UD\_BASE@{UD\_BASE}}
+\index{UD\_BASE@{UD\_BASE}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{UD\_BASE}{UD\_BASE}}
+{\footnotesize\ttfamily \#define UD\+\_\+\+BASE~24}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00007}{7}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}\label{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90} 
+\index{potentiometer.c@{potentiometer.c}!gpio\_set@{gpio\_set}}
+\index{gpio\_set@{gpio\_set}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{gpio\_set()}{gpio\_set()}}
+{\footnotesize\ttfamily void gpio\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{gpio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00013}{13}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ bcm2835\_gpio\_fsel(gpio,\ BCM2835\_GPIO\_FSEL\_OUTP);}
+\DoxyCodeLine{00015\ \ \ \ \ bcm2835\_gpio\_write(gpio,\ value);}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+\Hypertarget{potentiometer_8c_a73e2fdec0d1e37a2ee7ca66b4dc664a9}\label{potentiometer_8c_a73e2fdec0d1e37a2ee7ca66b4dc664a9} 
+\index{potentiometer.c@{potentiometer.c}!mcp4011\_get\_r\_wiper@{mcp4011\_get\_r\_wiper}}
+\index{mcp4011\_get\_r\_wiper@{mcp4011\_get\_r\_wiper}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{mcp4011\_get\_r\_wiper()}{mcp4011\_get\_r\_wiper()}}
+{\footnotesize\ttfamily float mcp4011\+\_\+get\+\_\+r\+\_\+wiper (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pot\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00085}{85}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{potentiometer_8h_a0dbc6e7325632cd6a392508b83020dc8}{WIPER\_RESISTANCE}}(\mbox{\hyperlink{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b}{pots}}[pot\_num].r\_ab,\ \mbox{\hyperlink{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b}{pots}}[pot\_num].current\_wiper\_pos);}
+\DoxyCodeLine{00087\ \}}
+
+\end{DoxyCode}
+\Hypertarget{potentiometer_8c_a68cfba892467fbe2d7340f0456007bc6}\label{potentiometer_8c_a68cfba892467fbe2d7340f0456007bc6} 
+\index{potentiometer.c@{potentiometer.c}!mcp4011\_init\_all@{mcp4011\_init\_all}}
+\index{mcp4011\_init\_all@{mcp4011\_init\_all}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{mcp4011\_init\_all()}{mcp4011\_init\_all()}}
+{\footnotesize\ttfamily void mcp4011\+\_\+init\+\_\+all (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00030}{30}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (!bcm2835\_init())\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}bcm2835\_init\ failed.\ Run\ with\ sudo\(\backslash\)n"{}});}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Wspólne\ piny}}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(\mbox{\hyperlink{potentiometer_8c_a3cfc3348686a8a56aab1df67dab48ef8}{CS\_GPIO}},\ HIGH);}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(\mbox{\hyperlink{potentiometer_8c_a37a1aa0a3b2d923a963ed05415e87d3e}{INC\_GPIO}},\ HIGH);}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Inicjalizuj\ 8\ potencjometrów\ (10kΩ)}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint8\_t\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{potentiometer_8c_a103d35f985ec321828356877c4edfa35}{NUM\_POTS}};\ ++i)\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a2df2100a5e2a92afbf7264c32741358e}{mcp4011\_init\_single}}(\&\mbox{\hyperlink{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b}{pots}}[i],\ \mbox{\hyperlink{potentiometer_8c_a3cfc3348686a8a56aab1df67dab48ef8}{CS\_GPIO}},\ \mbox{\hyperlink{potentiometer_8c_a888e0c7041726e707e7cf03d68737f07}{UD\_BASE}}\ +\ i,\ \mbox{\hyperlink{potentiometer_8h_a90c847224e4ad69c8b99f1254d85e315}{R\_AB\_3}});}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{potentiometer_8c_a68cfba892467fbe2d7340f0456007bc6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{potentiometer_8c_a2df2100a5e2a92afbf7264c32741358e}\label{potentiometer_8c_a2df2100a5e2a92afbf7264c32741358e} 
+\index{potentiometer.c@{potentiometer.c}!mcp4011\_init\_single@{mcp4011\_init\_single}}
+\index{mcp4011\_init\_single@{mcp4011\_init\_single}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{mcp4011\_init\_single()}{mcp4011\_init\_single()}}
+{\footnotesize\ttfamily void mcp4011\+\_\+init\+\_\+single (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmcp4011__t}{mcp4011\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{pot,  }\item[{uint8\+\_\+t}]{cs,  }\item[{uint8\+\_\+t}]{ud,  }\item[{float}]{r\+\_\+ab\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00019}{19}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ pot-\/>\mbox{\hyperlink{structmcp4011__t_ad92687e97f8ca31c694678bfaccf2a58}{cs\_pin}}\ =\ cs;}
+\DoxyCodeLine{00021\ \ \ \ \ pot-\/>\mbox{\hyperlink{structmcp4011__t_ad0f386bb2b933fbbde0211bab75e13e6}{ud\_pin}}\ =\ ud;}
+\DoxyCodeLine{00022\ \ \ \ \ pot-\/>\mbox{\hyperlink{structmcp4011__t_af206e960564826c9f8fb32abe8920951}{r\_ab}}\ =\ r\_ab\_value;}
+\DoxyCodeLine{00023\ \ \ \ \ pot-\/>\mbox{\hyperlink{structmcp4011__t_a56bf4aeacba8f660e2a9dd3948c74643}{current\_wiper\_pos}}\ =\ \mbox{\hyperlink{potentiometer_8h_ab29a20d3aa556faff8bbe2fe1e427259}{POR\_WIPER\_MID}};\ \ \textcolor{comment}{//\ POR\ default}}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(cs,\ HIGH);\ \ \textcolor{comment}{//\ CS\ idle\ HIGH}}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(ud,\ HIGH);\ \ \textcolor{comment}{//\ U/D\ default\ UP}}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{potentiometer_8c_a2df2100a5e2a92afbf7264c32741358e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{potentiometer_8c_a1705b37d198b8f408151387165e51acd}\label{potentiometer_8c_a1705b37d198b8f408151387165e51acd} 
+\index{potentiometer.c@{potentiometer.c}!mcp4011\_set\_all@{mcp4011\_set\_all}}
+\index{mcp4011\_set\_all@{mcp4011\_set\_all}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{mcp4011\_set\_all()}{mcp4011\_set\_all()}}
+{\footnotesize\ttfamily void mcp4011\+\_\+set\+\_\+all (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00078}{78}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{potentiometer_8c_a103d35f985ec321828356877c4edfa35}{NUM\_POTS}};\ ++i)\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_ac928c7b9fe64b80b6b7cc962fd71b7da}{mcp4011\_set\_position}}(i,\ position);}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{potentiometer_8c_a1705b37d198b8f408151387165e51acd_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{potentiometer_8c_ac928c7b9fe64b80b6b7cc962fd71b7da}\label{potentiometer_8c_ac928c7b9fe64b80b6b7cc962fd71b7da} 
+\index{potentiometer.c@{potentiometer.c}!mcp4011\_set\_position@{mcp4011\_set\_position}}
+\index{mcp4011\_set\_position@{mcp4011\_set\_position}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{mcp4011\_set\_position()}{mcp4011\_set\_position()}}
+{\footnotesize\ttfamily void mcp4011\+\_\+set\+\_\+position (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pot\+\_\+num,  }\item[{uint8\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00046}{46}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (pot\_num\ >=\ \mbox{\hyperlink{potentiometer_8c_a103d35f985ec321828356877c4edfa35}{NUM\_POTS}}\ ||\ position\ >\ 63)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{structmcp4011__t}{mcp4011\_t}}\ *pot\ =\ \&\mbox{\hyperlink{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b}{pots}}[pot\_num];}
+\DoxyCodeLine{00052\ \ \ \ \ uint8\_t\ current\ =\ pot-\/>\mbox{\hyperlink{structmcp4011__t_a56bf4aeacba8f660e2a9dd3948c74643}{current\_wiper\_pos}};}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (current\ ==\ position)\ \textcolor{keywordflow}{return};\ }
+\DoxyCodeLine{00055\ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ uint8\_t\ steps\ =\ (position\ >\ current)\ ?\ (position\ -\/\ current)\ :\ (current\ -\/\ position);}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ 1.\ Kierunek\ U/D}}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(pot-\/>\mbox{\hyperlink{structmcp4011__t_ad0f386bb2b933fbbde0211bab75e13e6}{ud\_pin}},\ position\ >\ current);}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ 2.\ CS\ LOW\ (aktywacja)}}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(pot-\/>\mbox{\hyperlink{structmcp4011__t_ad92687e97f8ca31c694678bfaccf2a58}{cs\_pin}},\ LOW);}
+\DoxyCodeLine{00063\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{for}(uint8\_t\ i\ =\ 0;\ i\ <\ steps;\ ++i)\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(\mbox{\hyperlink{potentiometer_8c_a37a1aa0a3b2d923a963ed05415e87d3e}{INC\_GPIO}},\ LOW);\ \ \ \ \ \textcolor{comment}{//\ ↓\ 10μs}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ bcm2835\_delayMicroseconds(10);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(\mbox{\hyperlink{potentiometer_8c_a37a1aa0a3b2d923a963ed05415e87d3e}{INC\_GPIO}},\ HIGH);\ \ \ \ \textcolor{comment}{//\ ↑}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ bcm2835\_delayMicroseconds(10);}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ 4.\ CS\ HIGH\ (zapis)}}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{potentiometer_8c_a9d18fbe86b55e930f60bee055ec08d90}{gpio\_set}}(pot-\/>\mbox{\hyperlink{structmcp4011__t_ad92687e97f8ca31c694678bfaccf2a58}{cs\_pin}},\ HIGH);}
+\DoxyCodeLine{00073\ \ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ pot-\/>\mbox{\hyperlink{structmcp4011__t_a56bf4aeacba8f660e2a9dd3948c74643}{current\_wiper\_pos}}\ =\ position;}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{potentiometer_8c_ac928c7b9fe64b80b6b7cc962fd71b7da_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b}\label{potentiometer_8c_a092c5bc961bcfc8eeaa87234766e8b8b} 
+\index{potentiometer.c@{potentiometer.c}!pots@{pots}}
+\index{pots@{pots}!potentiometer.c@{potentiometer.c}}
+\doxysubsubsection{\texorpdfstring{pots}{pots}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmcp4011__t}{mcp4011\+\_\+t}} pots\mbox{[}\mbox{\hyperlink{potentiometer_8c_a103d35f985ec321828356877c4edfa35}{NUM\+\_\+\+POTS}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{potentiometer_8c_source_l00010}{10}} of file \mbox{\hyperlink{potentiometer_8c_source}{potentiometer.\+c}}.
+

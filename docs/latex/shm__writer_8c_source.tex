@@ -1,0 +1,63 @@
+\doxysection{shm\+\_\+writer.\+c}
+\hypertarget{shm__writer_8c_source}{}\label{shm__writer_8c_source}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/src/shm\_writer.c@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/src/shm\_writer.c}}
+\mbox{\hyperlink{shm__writer_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shm__writer_8h}{shm\_writer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00003}\mbox{\hyperlink{shm__writer_8c_a88c2fc0c7f563a836ce699e633466caa}{00003}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{shm__writer_8c_a88c2fc0c7f563a836ce699e633466caa}{shm\_initialize}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *shm\_name,\ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ **buffer\_out)\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00004}00004\ \ \ \ \ \textcolor{keywordtype}{int}\ shm\_fd\ =\ shm\_open(shm\_name,\ O\_CREAT\ |\ O\_RDWR,\ 0666);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00005}00005\ \ \ \ \ \textcolor{keywordflow}{if}(shm\_fd\ ==\ -\/1)\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00006}00006\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}[Shared\ Memory\ Writer]\ shm\_open\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00008}00008\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}(ftruncate(shm\_fd,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}))\ ==\ -\/1)\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00010}00010\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}[Shared\ Memory\ Writer]\ ftruncate\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00012}00012\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ *buffer\ =\ mmap(NULL,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}),}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PROT\_READ\ |\ PROT\_WRITE,}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MAP\_SHARED,\ shm\_fd,\ 0);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}(buffer\ ==\ MAP\_FAILED)\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00018}00018\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}[Shared\ Memory\ Writer]\ mmap\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00022}00022\ \ \ \ \ atomic\_store(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}},\ 0);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00023}00023\ \ \ \ \ atomic\_store(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}},\ 0);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00025}00025\ \ \ \ \ *buffer\_out\ =\ buffer;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00030}\mbox{\hyperlink{shm__writer_8c_a0d5b0e8588da85d9b5fa5c2b600374a3}{00030}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{shm__writer_8c_a0d5b0e8588da85d9b5fa5c2b600374a3}{shm\_write}}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ *buffer,\ \textcolor{keywordtype}{float}\ data[\mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\_SIZE}}])\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}(!buffer\ ||\ !data)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00033}00033\ \ \ \ \ uint32\_t\ head\ =\ atomic\_load\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}},\ memory\_order\_relaxed);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00034}00034\ \ \ \ \ uint32\_t\ tail\ =\ atomic\_load\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}},\ memory\_order\_acquire);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00035}00035\ \ \ \ \ uint32\_t\ next\ =\ (head\ +\ 1)\ \%\ \mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}};}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{if}(next\ ==\ tail)\{\ \textcolor{comment}{//\ drop\ oldest\ if\ buffer\ is\ full}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ atomic\_store\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}},\ (tail\ +\ 1)\ \%\ \mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}},\ memory\_order\_release);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00041}00041\ \ \ \ \ memcpy(buffer-\/>\mbox{\hyperlink{structSharedBuffer_a2df5f74ae2279d3429d47fa783c7021b}{data}}[head],\ data,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})\ *\ \mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\_SIZE}});}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00043}00043\ \ \ \ \ atomic\_thread\_fence(memory\_order\_release);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00044}00044\ \ \ \ \ atomic\_store\_explicit(\&buffer-\/>\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}},\ next,\ memory\_order\_release);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00049}\mbox{\hyperlink{shm__writer_8c_aabb9056702079a66f4e9bb89256d964c}{00049}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{shm__writer_8c_aabb9056702079a66f4e9bb89256d964c}{shm\_cleanup}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *shm\_name,\ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ *buffer)\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}(!buffer)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00052}00052\ \ \ \ \ munmap(buffer,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}));}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00053}00053\ \ \ \ \ shm\_unlink(shm\_name);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8c_source_l00057}00057\ }
+
+\end{DoxyCode}

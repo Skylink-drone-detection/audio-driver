@@ -1,0 +1,24 @@
+PROJECT_NAME           = "Audio Driver MCP4011 + MCP3564"
+OUTPUT_DIRECTORY       = docs
+
+# POPRAWNE ŚCIEŻKI - TWOJE src/ + include/
+INPUT                  = ../src/ ../include/
+
+FILE_PATTERNS          = *.c *.h
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+GENERATE_HTML          = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+GENERATE_TREEVIEW      = YES
+
+HAVE_DOT               = YES
+CALL_GRAPH             = YES
+
+OUTPUT_LANGUAGE        = English
+MARKDOWN_SUPPORT       = YES
+
+QUIET                  = NO

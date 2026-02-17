@@ -1,0 +1,27 @@
+\doxysection{switch\+\_\+logic.\+h}
+\hypertarget{switch__logic_8h_source}{}\label{switch__logic_8h_source}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/switch\_logic.h@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/switch\_logic.h}}
+\mbox{\hyperlink{switch__logic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ SWITCH\_H}}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ SWITCH\_H}}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{libraries_8h}{libraries.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pins_8h}{pins.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00012}\mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775f}{00012}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00013}\mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775fae6d6a97775b48f2e70469e920e6103cd}{00013}}\ \ \ \ \ \mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775fae6d6a97775b48f2e70469e920e6103cd}{FILTER\_LOW\_PASS}}\ \ =\ 1,}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775faa5ca5cc1f7e21cb9c63b9fe36d8ae61e}{FILTER\_HIGH\_PASS}}\ =\ 0}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00015}\mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775faa5ca5cc1f7e21cb9c63b9fe36d8ae61e}{00015}}\ \}\ \mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775f}{FilterMode\_t}};}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00017}00017\ \textcolor{comment}{/*\ Context\ structure\ to\ maintain\ the\ BCM2835\ handle\ */}}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00018}\mbox{\hyperlink{structAudioRouting__t}{00018}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00019}\mbox{\hyperlink{structAudioRouting__t_aacc351f4229c13ec95e219aa4b9652ba}{00019}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structAudioRouting__t_aacc351f4229c13ec95e219aa4b9652ba}{initialized}};}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00020}00020\ \}\ \mbox{\hyperlink{structAudioRouting__t}{AudioRouting\_t}};}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00026}00026\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{switch__logic_8h_a222db244599a3c3c500a8ef52043efe9}{Audio\_Init}}(\mbox{\hyperlink{structAudioRouting__t}{AudioRouting\_t}}\ *ctx);}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00030}00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{switch__logic_8h_a8c68b4f915f12b85ea07d812f47e72ef}{Audio\_SetFilters}}(\mbox{\hyperlink{structAudioRouting__t}{AudioRouting\_t}}\ *ctx,\ \mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775f}{FilterMode\_t}}\ chA,\ \mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775f}{FilterMode\_t}}\ chB,\ \mbox{\hyperlink{switch__logic_8h_ab9e505a915f8137f7582f9fd8eab775f}{FilterMode\_t}}\ chC);}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00034}00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{switch__logic_8h_a4a030aa29388db527c03a1037210d8fd}{Audio\_Cleanup}}(\mbox{\hyperlink{structAudioRouting__t}{AudioRouting\_t}}\ *ctx);}
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{switch__logic_8h_source_l00036}00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

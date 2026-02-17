@@ -1,0 +1,40 @@
+\doxysection{adc.\+h}
+\hypertarget{adc_8h_source}{}\label{adc_8h_source}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/adc.h@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/adc.h}}
+\mbox{\hyperlink{adc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00002}00002\ \textcolor{comment}{\ *\ MCP3564\ ADC\ Program\ for\ Raspberry\ Pi}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00003}00003\ \textcolor{comment}{\ *\ Requirements:\ libbcm2835\ (sudo\ apt-\/get\ install\ libbcm2835-\/dev)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Compilation:\ gcc\ -\/o\ mcp3564\ mcp3564.c\ -\/lbcm2835}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Run\ with:\ sudo\ ./mcp3564}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ ADC\_H}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ ADC\_H}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{libraries_8h}{libraries.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pins_8h}{pins.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00013}00013\ \textcolor{comment}{//\ MCP3564\ register\ addresses}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00014}\mbox{\hyperlink{adc_8h_aa4ce35376bc9c397ed29a78e87f3814b}{00014}}\ \textcolor{preprocessor}{\#define\ REG\_ADCCONFIG\ \ \ (0x01)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00015}\mbox{\hyperlink{adc_8h_a7b247454e2da773b76e7179001f4b7e4}{00015}}\ \textcolor{preprocessor}{\#define\ REG\_ADCSTATUS\ \ \ (0x02)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00016}\mbox{\hyperlink{adc_8h_a70e3771fbd0011103f8f17333adc02e3}{00016}}\ \textcolor{preprocessor}{\#define\ REG\_ADCDATA\ \ \ \ \ (0x03)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00017}\mbox{\hyperlink{adc_8h_a4036427e2f28984cfef598a57e01d0f0}{00017}}\ \textcolor{preprocessor}{\#define\ REG\_SCAN\ \ \ \ \ \ \ \ (0x04)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00018}\mbox{\hyperlink{adc_8h_aa0ab1250133a71a1f95e695e333600a0}{00018}}\ \textcolor{preprocessor}{\#define\ REG\_CONFIG0\ \ \ \ \ (0x05)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00019}\mbox{\hyperlink{adc_8h_a5b93ab1d3172cbf4cbddb358cd790dec}{00019}}\ \textcolor{preprocessor}{\#define\ REG\_CONFIG1\ \ \ \ \ (0x06)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00020}\mbox{\hyperlink{adc_8h_a18652948d84fc2e7fb3b95308daaf075}{00020}}\ \textcolor{preprocessor}{\#define\ REG\_CONFIG2\ \ \ \ \ (0x07)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00021}\mbox{\hyperlink{adc_8h_a9a416b8a858857c9db6d8d61d8077fe1}{00021}}\ \textcolor{preprocessor}{\#define\ REG\_CONFIG3\ \ \ \ \ (0x08)}}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00023}00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a65a0bd171ec3023b3ab27d74aba10415}{cs\_low}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00024}00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_acf776b63fb1b19d37c9a0bc8d312ea9e}{cs\_high}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00025}00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_ae6c3b708b5ff997b7d1d57d5c71847d1}{spi\_transfer}}(uint8\_t\ *tx,\ uint8\_t\ *rx,\ \textcolor{keywordtype}{int}\ len);}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00026}00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(uint8\_t\ addr,\ uint8\_t\ value);}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00027}00027\ uint8\_t\ \mbox{\hyperlink{adc_8h_ae11414d69ac7d7543abf98808d43e6b3}{read\_reg}}(uint8\_t\ addr);}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00028}00028\ int32\_t\ \mbox{\hyperlink{adc_8h_a87a6ee68677cd79d5025156f192a8338}{read\_data}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00029}00029\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{adc_8h_a5a6f8049152a23862cdeaaf67465c812}{init\_raspberry\_pi\_spi}}(uint8\_t\ cs\_pin,\ uint32\_t\ clock\_divider);}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00030}00030\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a35ca5d444ca89ae6b0a9f2664d4d5bb7}{cleanup\_raspberry\_pi\_spi}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00031}00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a0525248fb5d6c38f4179ebe11e23096c}{init\_mcp3564}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00032}00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{adc_8h_a964a77f1c979db13e37136fbbdaf5071}{read\_all\_channels}}(\textcolor{keywordtype}{float}\ values[8]);}
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{adc_8h_source_l00034}00034\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

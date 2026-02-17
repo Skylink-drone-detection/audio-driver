@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['gpio_5fcs1_0',['GPIO_CS1',['../pins_8h.html#a6c821fb87bb8fca1d21e745083deee86',1,'pins.h']]],
+  ['gpio_5fcs2_1',['GPIO_CS2',['../pins_8h.html#a1eecfaeae9610d1191927b7ee6886739',1,'pins.h']]],
+  ['gpio_5fcs3_2',['GPIO_CS3',['../pins_8h.html#aae664c7d7ca824fb1ab0b354967b8423',1,'pins.h']]],
+  ['gpio_5fcs4_3',['GPIO_CS4',['../pins_8h.html#a2d929b668777895d45f9c9f5be01cc9f',1,'pins.h']]],
+  ['gpio_5fcs5_4',['GPIO_CS5',['../pins_8h.html#a59cb33892033448ae902df637868c087',1,'pins.h']]],
+  ['gpio_5fcs6_5',['GPIO_CS6',['../pins_8h.html#a63437de55288c8e15bef30f0d9485dfd',1,'pins.h']]],
+  ['gpio_5fcs7_6',['GPIO_CS7',['../pins_8h.html#a26900446e7253c230c9389da055f4e24',1,'pins.h']]],
+  ['gpio_5fcs8_7',['GPIO_CS8',['../pins_8h.html#a06610939a7afa085fc4748d71450b810',1,'pins.h']]],
+  ['gpio_5firq_8',['GPIO_IRQ',['../pins_8h.html#aa08ab47a69b3515b40c5aa8a9029555c',1,'pins.h']]],
+  ['gpio_5fsck_9',['GPIO_SCK',['../pins_8h.html#a00c66401aafa5db3bb95d94b1d69c7a7',1,'pins.h']]],
+  ['gpio_5fsdi_10',['GPIO_SDI',['../pins_8h.html#a3dc4878204d4d5f09ce52854d202e0af',1,'pins.h']]],
+  ['gpio_5fsdo_11',['GPIO_SDO',['../pins_8h.html#a13e305b61217e110af272a34b85f2b15',1,'pins.h']]],
+  ['gpio_5fswitch_5fchannel_5fa_12',['GPIO_SWITCH_CHANNEL_A',['../pins_8h.html#a541dcc56cbaca5437409543698244065',1,'pins.h']]],
+  ['gpio_5fswitch_5fchannel_5fb_13',['GPIO_SWITCH_CHANNEL_B',['../pins_8h.html#a6cbe4034b866316e788726e6613d6eba',1,'pins.h']]],
+  ['gpio_5fswitch_5fchannel_5fc_14',['GPIO_SWITCH_CHANNEL_C',['../pins_8h.html#a0dfb6dbee1ea4d87c535487558a49536',1,'pins.h']]],
+  ['gpio_5fud_15',['GPIO_UD',['../pins_8h.html#a39468b1fd947c52f8719f30bbac7545c',1,'pins.h']]]
+];

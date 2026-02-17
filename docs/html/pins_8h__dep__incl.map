@@ -1,0 +1,19 @@
+<map id="/home/raven/studies/skylink_spi/potentiometers/audio&#45;driver/include/pins.h" name="/home/raven/studies/skylink_spi/potentiometers/audio&#45;driver/include/pins.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="391,5,593,60"/>
+<area shape="rect" id="Node000002" href="$adc_8h.html" title=" " alt="" coords="5,115,208,170"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="382,66,221,111,195,118,194,113,219,105,381,61"/>
+<area shape="rect" id="Node000004" href="$potentiometer_8h.html" title=" " alt="" coords="232,115,496,170"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="451,72,397,117,394,113,448,67"/>
+<area shape="rect" id="Node000006" href="$shm__writer_8h.html" title=" " alt="" coords="520,108,723,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="536,67,583,106,579,110,533,71"/>
+<area shape="rect" id="Node000008" href="$switch__logic_8h.html" title=" " alt="" coords="749,108,952,177"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="593,61,750,108,748,113,591,67"/>
+<area shape="rect" id="Node000003" href="$adc_8c.html" title=" " alt="" coords="5,233,208,287"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,184,109,232,104,232,104,184"/>
+<area shape="rect" id="Node000005" href="$potentiometer_8c.html" title=" " alt="" coords="247,233,481,287"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="367,184,367,232,361,232,361,184"/>
+<area shape="rect" id="Node000007" href="$shm__writer_8c.html" title=" " alt="" coords="511,233,726,287"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="623,191,622,232,617,232,618,191"/>
+<area shape="rect" id="Node000009" href="$switch__logic_8c.html" title=" " alt="" coords="751,225,953,295"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="854,191,854,225,849,225,849,191"/>
+</map>

@@ -1,0 +1,39 @@
+\doxysection{shm\+\_\+writer.\+h}
+\hypertarget{shm__writer_8h_source}{}\label{shm__writer_8h_source}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/shm\_writer.h@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/include/shm\_writer.h}}
+\mbox{\hyperlink{shm__writer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00001}00001\ \textcolor{comment}{/*\ Inter-\/process\ communication\ with\ Shared\ Memory}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00002}00002\ \textcolor{comment}{\ *\ through\ Ring\ Buffer\ of\ microphone\ data\ arrays}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00003}00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ SHM\_WRITER\_H}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00006}00006\ \textcolor{preprocessor}{\#define\ SHM\_WRITER\_H}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{libraries_8h}{libraries.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pins_8h}{pins.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00011}\mbox{\hyperlink{shm__writer_8h_a86393b21e6f74e9870d92149e7fe7f20}{00011}}\ \textcolor{preprocessor}{\#define\ SHM\_NAME\ ("{}/mic\_ring\_buffer"{})}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00012}\mbox{\hyperlink{shm__writer_8h_a9cd77b2c1b0a995d2c8eb445db490d2c}{00012}}\ \textcolor{preprocessor}{\#define\ WRITE\_FREQ\ (8000)}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00013}\mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{00013}}\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\ (800)}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00014}\mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{00014}}\ \textcolor{preprocessor}{\#define\ ARRAY\_SIZE\ (8)}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00016}00016\ \textcolor{comment}{//\ Ring\ Buffer\ shared\ between\ processes}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00017}\mbox{\hyperlink{structSharedBuffer}{00017}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00018}\mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{00018}}\ \ \ \ \ atomic\_uint\ \mbox{\hyperlink{structSharedBuffer_af19336fea2fa6344ce0d8a5502d34f60}{head}};\ \textcolor{comment}{//\ write\ index}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00019}\mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{00019}}\ \ \ \ \ atomic\_uint\ \mbox{\hyperlink{structSharedBuffer_afd1ae312a228a99e55e2851819e2e460}{tail}};\ \textcolor{comment}{//\ read\ index}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00020}\mbox{\hyperlink{structSharedBuffer_a2df5f74ae2279d3429d47fa783c7021b}{00020}}\ \ \ \ \ \textcolor{keywordtype}{float}\ data[\mbox{\hyperlink{shm__writer_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}][\mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00021}00021\ \}\ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}};}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00023}00023\ \textcolor{comment}{//\ Initialize\ shared\ memory}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00024}00024\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{shm__writer_8h_a88c2fc0c7f563a836ce699e633466caa}{shm\_initialize}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *shm\_name,\ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ **buffer\_out);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00026}00026\ \textcolor{comment}{//\ Write\ one\ array\ to\ buffer}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00027}00027\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{shm__writer_8h_a0d5b0e8588da85d9b5fa5c2b600374a3}{shm\_write}}(\mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ *buffer,\ \textcolor{keywordtype}{float}\ data[\mbox{\hyperlink{shm__writer_8h_a7ec751f49d6391028a94f1419374c2fa}{ARRAY\_SIZE}}]);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00029}00029\ \textcolor{comment}{//\ Clean\ up\ shared\ memory\ (unmap\ and\ unlink)}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00030}00030\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{shm__writer_8h_aabb9056702079a66f4e9bb89256d964c}{shm\_cleanup}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *shm\_name,\ \mbox{\hyperlink{structSharedBuffer}{SharedBuffer}}\ *buffer);}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00032}00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{shm__writer_8h_source_l00033}00033\ }
+
+\end{DoxyCode}

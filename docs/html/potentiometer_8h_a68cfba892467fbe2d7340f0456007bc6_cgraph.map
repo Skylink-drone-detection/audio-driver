@@ -1,0 +1,8 @@
+<map id="mcp4011_init_all" name="mcp4011_init_all">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,139,31"/>
+<area shape="rect" id="Node000002" href="$potentiometer_8c.html#a9d18fbe86b55e930f60bee055ec08d90" title=" " alt="" coords="391,5,468,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,15,377,15,377,21,139,21"/>
+<area shape="rect" id="Node000003" href="$potentiometer_8c.html#a2df2100a5e2a92afbf7264c32741358e" title=" " alt="" coords="187,31,343,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,24,173,29,172,34,138,29"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="342,29,377,23,378,29,343,34"/>
+</map>

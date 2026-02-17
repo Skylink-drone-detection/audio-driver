@@ -1,0 +1,342 @@
+\doxysection{/home/raven/studies/skylink\+\_\+spi/potentiometers/audio-\/driver/src/adc.c File Reference}
+\hypertarget{adc_8c}{}\label{adc_8c}\index{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/src/adc.c@{/home/raven/studies/skylink\_spi/potentiometers/audio-\/driver/src/adc.c}}
+{\ttfamily \#include "{}adc.\+h"{}}\newline
+Include dependency graph for adc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{adc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adc_8c_a65a0bd171ec3023b3ab27d74aba10415}{cs\+\_\+low}} (void)
+\item 
+void \mbox{\hyperlink{adc_8c_acf776b63fb1b19d37c9a0bc8d312ea9e}{cs\+\_\+high}} (void)
+\item 
+void \mbox{\hyperlink{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1}{spi\+\_\+transfer}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}tx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}rx, int len)
+\item 
+void \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\+\_\+reg}} (uint8\+\_\+t addr, uint8\+\_\+t value)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{adc_8c_ae11414d69ac7d7543abf98808d43e6b3}{read\+\_\+reg}} (uint8\+\_\+t addr)
+\item 
+int32\+\_\+t \mbox{\hyperlink{adc_8c_a87a6ee68677cd79d5025156f192a8338}{read\+\_\+data}} (void)
+\item 
+bool \mbox{\hyperlink{adc_8c_a5a6f8049152a23862cdeaaf67465c812}{init\+\_\+raspberry\+\_\+pi\+\_\+spi}} (uint8\+\_\+t cs\+\_\+pin, uint32\+\_\+t clock\+\_\+divider)
+\item 
+void \mbox{\hyperlink{adc_8c_a35ca5d444ca89ae6b0a9f2664d4d5bb7}{cleanup\+\_\+raspberry\+\_\+pi\+\_\+spi}} (void)
+\item 
+void \mbox{\hyperlink{adc_8c_a0525248fb5d6c38f4179ebe11e23096c}{init\+\_\+mcp3564}} (void)
+\item 
+void \mbox{\hyperlink{adc_8c_a964a77f1c979db13e37136fbbdaf5071}{read\+\_\+all\+\_\+channels}} (float values\mbox{[}8\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{adc_8c_a35ca5d444ca89ae6b0a9f2664d4d5bb7}\label{adc_8c_a35ca5d444ca89ae6b0a9f2664d4d5bb7} 
+\index{adc.c@{adc.c}!cleanup\_raspberry\_pi\_spi@{cleanup\_raspberry\_pi\_spi}}
+\index{cleanup\_raspberry\_pi\_spi@{cleanup\_raspberry\_pi\_spi}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{cleanup\_raspberry\_pi\_spi()}{cleanup\_raspberry\_pi\_spi()}}
+{\footnotesize\ttfamily void cleanup\+\_\+raspberry\+\_\+pi\+\_\+spi (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00081}{81}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ bcm2835\_spi\_end();}
+\DoxyCodeLine{00083\ \ \ \ \ bcm2835\_close();}
+\DoxyCodeLine{00084\ \}}
+
+\end{DoxyCode}
+\Hypertarget{adc_8c_acf776b63fb1b19d37c9a0bc8d312ea9e}\label{adc_8c_acf776b63fb1b19d37c9a0bc8d312ea9e} 
+\index{adc.c@{adc.c}!cs\_high@{cs\_high}}
+\index{cs\_high@{cs\_high}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{cs\_high()}{cs\_high()}}
+{\footnotesize\ttfamily void cs\+\_\+high (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00008}{8}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ bcm2835\_gpio\_write(\mbox{\hyperlink{pins_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}{SPI\_CS}},\ HIGH);\ \ \textcolor{comment}{//\ CS\ =\ 1\ -\/>\ deselected}}
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+\Hypertarget{adc_8c_a65a0bd171ec3023b3ab27d74aba10415}\label{adc_8c_a65a0bd171ec3023b3ab27d74aba10415} 
+\index{adc.c@{adc.c}!cs\_low@{cs\_low}}
+\index{cs\_low@{cs\_low}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{cs\_low()}{cs\_low()}}
+{\footnotesize\ttfamily void cs\+\_\+low (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00004}{4}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00005\ \ \ \ \ bcm2835\_gpio\_write(\mbox{\hyperlink{pins_8h_ade4259fa3cbb71732a4e73c18dcb9b0d}{SPI\_CS}},\ LOW);\ \ \ \textcolor{comment}{//\ CS\ =\ 0\ -\/>\ device\ selected}}
+\DoxyCodeLine{00006\ \}}
+
+\end{DoxyCode}
+\Hypertarget{adc_8c_a0525248fb5d6c38f4179ebe11e23096c}\label{adc_8c_a0525248fb5d6c38f4179ebe11e23096c} 
+\index{adc.c@{adc.c}!init\_mcp3564@{init\_mcp3564}}
+\index{init\_mcp3564@{init\_mcp3564}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{init\_mcp3564()}{init\_mcp3564()}}
+{\footnotesize\ttfamily void init\+\_\+mcp3564 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00088}{88}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ 1.\ Enter\ standby\ mode\ (stop\ conversion\ during\ configuration)}}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_aa4ce35376bc9c397ed29a78e87f3814b}{REG\_ADCCONFIG}},\ 0x00);}
+\DoxyCodeLine{00091\ \ \ \ \ bcm2835\_delay(1);\ \textcolor{comment}{//\ short\ wait}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ 2.\ Channel\ configuration:\ all\ as\ single-\/ended,\ gain\ 1}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ \ \ \ (SIGN=0,\ GAIN=000)}}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_aa0ab1250133a71a1f95e695e333600a0}{REG\_CONFIG0}},\ 0x00);\ \textcolor{comment}{//\ channels\ 0\ and\ 1}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_a5b93ab1d3172cbf4cbddb358cd790dec}{REG\_CONFIG1}},\ 0x00);\ \textcolor{comment}{//\ channels\ 2\ and\ 3}}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_a18652948d84fc2e7fb3b95308daaf075}{REG\_CONFIG2}},\ 0x00);\ \textcolor{comment}{//\ channels\ 4\ and\ 5}}
+\DoxyCodeLine{00098\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_a9a416b8a858857c9db6d8d61d8077fe1}{REG\_CONFIG3}},\ 0x00);\ \textcolor{comment}{//\ channels\ 6\ and\ 7}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ 3.\ Enable\ scanning\ for\ all\ 8\ channels}}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_a4036427e2f28984cfef598a57e01d0f0}{REG\_SCAN}},\ 0xFF);\ \textcolor{comment}{//\ bits\ 0-\/7\ =\ 1}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ 4.\ Set\ continuous\ conversion\ mode,\ gain=1,\ speed\ 102.4\ kHz}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ \ \ \ Value\ 0x85:\ MODE=10\ (continuous),\ GAIN=000,\ SPEED=101}}
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}{write\_reg}}(\mbox{\hyperlink{adc_8h_aa4ce35376bc9c397ed29a78e87f3814b}{REG\_ADCCONFIG}},\ 0x85);\ \textcolor{comment}{//\ 0x86\ faster\ but\ unsafe}}
+\DoxyCodeLine{00106\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{adc_8c_a0525248fb5d6c38f4179ebe11e23096c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a5a6f8049152a23862cdeaaf67465c812}\label{adc_8c_a5a6f8049152a23862cdeaaf67465c812} 
+\index{adc.c@{adc.c}!init\_raspberry\_pi\_spi@{init\_raspberry\_pi\_spi}}
+\index{init\_raspberry\_pi\_spi@{init\_raspberry\_pi\_spi}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{init\_raspberry\_pi\_spi()}{init\_raspberry\_pi\_spi()}}
+{\footnotesize\ttfamily bool init\+\_\+raspberry\+\_\+pi\+\_\+spi (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cs\+\_\+pin,  }\item[{uint32\+\_\+t}]{clock\+\_\+divider }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00054}{54}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Initialize\ bcm2835\ library}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}(!bcm2835\_init())\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}bcm2835\ initialization\ error\(\backslash\)n"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ SPI\ Configuration}}
+\DoxyCodeLine{00062\ \ \ \ \ bcm2835\_spi\_begin();}
+\DoxyCodeLine{00063\ \ \ \ \ bcm2835\_spi\_setBitOrder(BCM2835\_SPI\_BIT\_ORDER\_MSBFIRST);}
+\DoxyCodeLine{00064\ \ \ \ \ bcm2835\_spi\_setDataMode(BCM2835\_SPI\_MODE0);\ \textcolor{comment}{//\ Set\ SPI\ mode\ to\ 0}}
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Set\ SPI\ clock\ speed}}
+\DoxyCodeLine{00067\ \ \ \ \ bcm2835\_spi\_setClockDivider(clock\_divider);}
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Disable\ hardware\ CS\ -\/\ we\ will\ control\ it\ manually}}
+\DoxyCodeLine{00070\ \ \ \ \ bcm2835\_spi\_chipSelect(BCM2835\_SPI\_CS\_NONE);}
+\DoxyCodeLine{00071\ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ Configure\ CS\ pin\ as\ output}}
+\DoxyCodeLine{00073\ \ \ \ \ bcm2835\_gpio\_fsel(cs\_pin,\ BCM2835\_GPIO\_FSEL\_OUTP);}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Set\ CS\ to\ high\ state\ (inactive)}}
+\DoxyCodeLine{00076\ \ \ \ \ bcm2835\_gpio\_write(cs\_pin,\ HIGH);}
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+\Hypertarget{adc_8c_a964a77f1c979db13e37136fbbdaf5071}\label{adc_8c_a964a77f1c979db13e37136fbbdaf5071} 
+\index{adc.c@{adc.c}!read\_all\_channels@{read\_all\_channels}}
+\index{read\_all\_channels@{read\_all\_channels}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{read\_all\_channels()}{read\_all\_channels()}}
+{\footnotesize\ttfamily void read\+\_\+all\+\_\+channels (\begin{DoxyParamCaption}\item[{float}]{values\mbox{[}8\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00111}{111}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ Helper\ arrays}}
+\DoxyCodeLine{00113\ \ \ \ \ int32\_t\ raw[8]\ =\ \{0\};}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ received[8]\ =\ \{0\};}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ samples\_collected\ =\ 0;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ Collect\ samples\ until\ all\ 8\ channels\ are\ received}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{while}\ (samples\_collected\ <\ 8)\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ uint8\_t\ status\ =\ \mbox{\hyperlink{adc_8c_ae11414d69ac7d7543abf98808d43e6b3}{read\_reg}}(\mbox{\hyperlink{adc_8h_a7b247454e2da773b76e7179001f4b7e4}{REG\_ADCSTATUS}});}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ \&\ 0x80)\ \{\ \textcolor{comment}{//\ DR\ (Data\ Ready)\ bit\ =\ 1}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ channel\ =\ (status\ >>\ 4)\ \&\ 0x07;\ \textcolor{comment}{//\ Extract\ Channel\ ID}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ int32\_t\ data\ =\ \mbox{\hyperlink{adc_8c_a87a6ee68677cd79d5025156f192a8338}{read\_data}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ don't\ have\ a\ sample\ for\ this\ channel\ yet,\ save\ it}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!received[channel])\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ raw[channel]\ =\ data;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ received[channel]\ =\ 1;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ samples\_collected++;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ already\ received,\ ignore\ (but\ data\ was\ read,}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ so\ DR\ flag\ is\ cleared\ and\ conversions\ continue)}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ Conversion\ of\ raw\ values\ to\ voltage\ (optional)}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ Assume\ Vref\ =\ 3.3\ V\ (if\ AVDD\ =\ 3.3\ V)}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 8;\ i++)\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ single-\/ended\ mode\ range\ 0..16777215\ corresponds\ to\ 0..Vref}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ values[i]\ =\ (float)raw[i]\ *\ 3.3f\ /\ 16777215.0f;}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{adc_8c_a964a77f1c979db13e37136fbbdaf5071_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a87a6ee68677cd79d5025156f192a8338}\label{adc_8c_a87a6ee68677cd79d5025156f192a8338} 
+\index{adc.c@{adc.c}!read\_data@{read\_data}}
+\index{read\_data@{read\_data}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{read\_data()}{read\_data()}}
+{\footnotesize\ttfamily int32\+\_\+t read\+\_\+data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00040}{40}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ uint8\_t\ cmd\ =\ 0x86;\ \ \ \textcolor{comment}{//\ read\ ADCDATA\ (address\ 0x03)}}
+\DoxyCodeLine{00042\ \ \ \ \ uint8\_t\ tx[4]\ =\ \{cmd,\ 0x00,\ 0x00,\ 0x00\};}
+\DoxyCodeLine{00043\ \ \ \ \ uint8\_t\ rx[4];}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1}{spi\_transfer}}(tx,\ rx,\ 4);}
+\DoxyCodeLine{00045\ \ \ \ \ int32\_t\ val\ =\ (rx[1]\ <<\ 16)\ |\ (rx[2]\ <<\ 8)\ |\ rx[3];}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Sign\ extension\ for\ 24-\/bits,\ probably\ not\ needed\ for\ us\ ???}}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//if\ (val\ \&\ 0x800000)}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ \ val\ -\/=\ 0x1000000;}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ val;}
+\DoxyCodeLine{00051\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{adc_8c_a87a6ee68677cd79d5025156f192a8338_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_ae11414d69ac7d7543abf98808d43e6b3}\label{adc_8c_ae11414d69ac7d7543abf98808d43e6b3} 
+\index{adc.c@{adc.c}!read\_reg@{read\_reg}}
+\index{read\_reg@{read\_reg}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{read\_reg()}{read\_reg()}}
+{\footnotesize\ttfamily uint8\+\_\+t read\+\_\+reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00031}{31}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ uint8\_t\ cmd\ =\ 0x80\ |\ ((addr\ <<\ 1)\ \&\ 0x7E);\ \textcolor{comment}{//\ R/W=1\ (read\ mode)}}
+\DoxyCodeLine{00033\ \ \ \ \ uint8\_t\ tx[2]\ =\ \{cmd,\ 0x00\};}
+\DoxyCodeLine{00034\ \ \ \ \ uint8\_t\ rx[2];}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1}{spi\_transfer}}(tx,\ rx,\ 2);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ rx[1];\ \textcolor{comment}{//\ second\ byte\ is\ the\ register\ value}}
+\DoxyCodeLine{00037\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{adc_8c_ae11414d69ac7d7543abf98808d43e6b3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1}\label{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1} 
+\index{adc.c@{adc.c}!spi\_transfer@{spi\_transfer}}
+\index{spi\_transfer@{spi\_transfer}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{spi\_transfer()}{spi\_transfer()}}
+{\footnotesize\ttfamily void spi\+\_\+transfer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{tx,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{rx,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00013}{13}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (!tx\ ||\ !rx\ ||\ len\ <=\ 0)\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ check\ null}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{adc_8c_a65a0bd171ec3023b3ab27d74aba10415}{cs\_low}}();}
+\DoxyCodeLine{00016\ \ \ \ \ bcm2835\_spi\_transfernb((\textcolor{keywordtype}{char}*)tx,\ (\textcolor{keywordtype}{char}*)rx,\ len);}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{adc_8c_acf776b63fb1b19d37c9a0bc8d312ea9e}{cs\_high}}();}
+\DoxyCodeLine{00018\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{adc_8c_a953ea175da0dbc95f253ac2b67fccc81}\label{adc_8c_a953ea175da0dbc95f253ac2b67fccc81} 
+\index{adc.c@{adc.c}!write\_reg@{write\_reg}}
+\index{write\_reg@{write\_reg}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{write\_reg()}{write\_reg()}}
+{\footnotesize\ttfamily void write\+\_\+reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00023}{23}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ uint8\_t\ cmd\ =\ (addr\ <<\ 1)\ \&\ 0x7E;\ \ \ \textcolor{comment}{//\ R/W=0,\ address\ shift,\ bit0=0}}
+\DoxyCodeLine{00025\ \ \ \ \ uint8\_t\ tx[2]\ =\ \{cmd,\ value\};}
+\DoxyCodeLine{00026\ \ \ \ \ uint8\_t\ rx[2];}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{adc_8c_ae6c3b708b5ff997b7d1d57d5c71847d1}{spi\_transfer}}(tx,\ rx,\ 2);}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{adc_8c_a953ea175da0dbc95f253ac2b67fccc81_cgraph}
+\end{center}
+\end{figure}

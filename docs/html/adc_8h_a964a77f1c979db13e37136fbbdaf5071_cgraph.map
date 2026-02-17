@@ -1,0 +1,14 @@
+<map id="read_all_channels" name="read_all_channels">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,144,56"/>
+<area shape="rect" id="Node000002" href="$adc_8c.html#a87a6ee68677cd79d5025156f192a8338" title=" " alt="" coords="192,5,279,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,30,178,24,179,30,145,35"/>
+<area shape="rect" id="Node000006" href="$adc_8c.html#ae11414d69ac7d7543abf98808d43e6b3" title=" " alt="" coords="196,55,275,80"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="145,51,183,57,182,62,144,56"/>
+<area shape="rect" id="Node000003" href="$adc_8c.html#ae6c3b708b5ff997b7d1d57d5c71847d1" title=" " alt="" coords="327,31,425,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="279,23,314,29,313,35,278,28"/>
+<area shape="rect" id="Node000004" href="$adc_8c.html#acf776b63fb1b19d37c9a0bc8d312ea9e" title=" " alt="" coords="473,5,544,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="425,31,460,25,461,30,426,37"/>
+<area shape="rect" id="Node000005" href="$adc_8c.html#a65a0bd171ec3023b3ab27d74aba10415" title=" " alt="" coords="475,55,542,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="426,50,462,56,461,62,425,55"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="274,58,313,51,313,57,275,63"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="read_reg" name="read_reg">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,84,56"/>
+<area shape="rect" id="Node000002" href="$adc_8c.html#ae6c3b708b5ff997b7d1d57d5c71847d1" title=" " alt="" coords="132,31,231,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,41,118,41,118,46,84,46"/>
+<area shape="rect" id="Node000003" href="$adc_8c.html#acf776b63fb1b19d37c9a0bc8d312ea9e" title=" " alt="" coords="279,5,349,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,31,265,25,266,30,231,37"/>
+<area shape="rect" id="Node000004" href="$adc_8c.html#a65a0bd171ec3023b3ab27d74aba10415" title=" " alt="" coords="281,55,347,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="231,50,268,56,267,62,230,55"/>
+</map>
