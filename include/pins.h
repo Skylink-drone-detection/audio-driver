@@ -12,6 +12,8 @@
 #define GPIO_SDO ((uint8_t) 9)  // MISO
 #define GPIO_SCK ((uint8_t) 11) // SCLK
 
+#define GPIO_IRQ ((uint8_t) 25)
+
 #define GPIO_UD  ((uint8_t) 5)
 
 #define GPIO_CS1 ((uint8_t) 6)
