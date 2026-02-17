@@ -4,6 +4,7 @@
 #ifndef SHM_WRITER_H
 #define SHM_WRITER_H
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/mman.h>
