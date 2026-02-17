@@ -134,7 +134,6 @@ void init_mcp3564() {
     //    Value 0x85: MODE=10 (continuous), GAIN=000, SPEED=101
     write_reg(REG_ADCCONFIG, 0x85);
 
-    printf("MCP3564 initialized: continuous mode, 102.4 kHz, 8-channel scan\n");
 }
 
 
