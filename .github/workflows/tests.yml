@@ -1,48 +1,37 @@
-name: Run Tests
-
+name: Run Tests                    # Działa z bcm2835!
 on:
   push:
     branches: [ "**" ]
   pull_request:
     branches: [ "**" ]
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            build-essential \
-            cmake \
-            libgpiod-dev
-
-      - name: Build and install wiringPi from source
-        run: |
-          git clone https://github.com/WiringPi/WiringPi.git
-          cd WiringPi
-          ./build
-          cd ..
-          # Skip verification as it will fail on x86_64
-
-      - name: Configure with CMake
-        run: |
-          mkdir -p build
-          cd build
-          cmake .. \
-            -DCMAKE_C_FLAGS="-Wall -Wextra -Werror -Wpedantic"
-
-      - name: Build
-        run: |
-          cd build
-          make -j$(nproc)
-      
-      - name: Run test
-        run: |
-          cd build
-          ctest --output-on-failure
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Install dependencies      # ✅ bcm2835 zamiast wiringPi
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          libbcm2835-dev              # ← ZMIENIONE z libgpiod-dev
+    
+    - name: Configure with CMake
+      run: |
+        mkdir -p build
+        cd build
+        cmake .. \
+          -DCMAKE_C_FLAGS="-Wall -Wextra -Werror -Wpedantic"
+    
+    - name: Build
+      run: |
+        cd build
+        make -j$(nproc)
+    
+    - name: Run test
+      run: |
+        cd build
+        ctest --output-on-failure

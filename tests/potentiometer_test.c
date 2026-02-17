@@ -1,4 +1,4 @@
-#include "../src/mcp4011.c"
+#include "../include/potentiometer.h"
 
 int main(void){
     // Inicjalizacja

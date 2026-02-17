@@ -1,8 +1,5 @@
 #include "shm_writer.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+
 
 #define TEST_SHM_NAME "/shm_writer_test"
 #define TEST_ITERATIONS 128 // 2*BUFFER_SIZE

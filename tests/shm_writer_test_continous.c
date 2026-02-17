@@ -4,16 +4,12 @@
  * so maybe don't run it in automatic testing.
 */
 #include "../include/shm_writer.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 
-#define TEST_SHM_NAME "/shm_writer_test"
-#define TEST_ITERATIONS 4096
+#define TEST_SHM_NAME ("/shm_writer_test")
+#define TEST_ITERATIONS (4096)
 
 int main(void) {
-	SharedBuffer *buffer = NULL;
+	SharedBuffer *buffer = nullptr;
 
 	printf("Initializing shared memory buffer.\n");
 	if (shm_initialize(TEST_SHM_NAME, &buffer) != 0) {
@@ -54,6 +50,6 @@ int main(void) {
 	shm_cleanup(TEST_SHM_NAME, buffer);
 	printf("Test complete.\n");
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 
