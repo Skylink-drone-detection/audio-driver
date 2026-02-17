@@ -28,8 +28,7 @@ jobs:
           cd WiringPi
           ./build
           cd ..
-          # Verify installation
-          gpio -v
+          # Skip verification as it will fail on x86_64
 
       - name: Configure with CMake
         run: |
