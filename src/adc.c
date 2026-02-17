@@ -52,11 +52,12 @@ int32_t read_data(void){
 
 
 bool init_raspberry_pi_spi(uint8_t cs_pin, uint32_t clock_divider){
-    // Initialize bcm2835 library
-    if(!bcm2835_init()){
-        fprintf(stderr, "bcm2835 initialization error\n");
+    /* IF BCM2835 IS NOT INCIALIZED IN MAIN, THEN UNCOMMENT THIS BLOCK
+    if (!bcm2835_init()) {
+        fprintf(stderr, "Cannot initialize BCM2835!\n");
         return false;
     }
+    */ 
 
     // SPI Configuration
     bcm2835_spi_begin();

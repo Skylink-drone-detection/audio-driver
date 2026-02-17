@@ -28,10 +28,12 @@ void mcp4011_init_single(mcp4011_t *pot, uint8_t cs, uint8_t ud, float r_ab_valu
 
 // Inicjalizacja wszystkich 8 potencjometrów
 void mcp4011_init_all(void){
+    /* IF BCM2835 IS NOT INCIALIZED IN MAIN, THEN UNCOMMENT THIS BLOCK
     if (!bcm2835_init()) {
-        fprintf(stderr, "bcm2835_init failed. Run with sudo\n");
-        exit(EXIT_FAILURE);
+        fprintf(stderr, "Cannot initialize BCM2835!\n");
+        return false;
     }
+    */ 
     
     // Wspólne piny
     gpio_set(CS_GPIO, HIGH);

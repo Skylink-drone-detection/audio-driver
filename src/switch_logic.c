@@ -5,10 +5,12 @@
  * @return true on success.
  */
 bool Audio_Init(AudioRouting_t *ctx) {
+    /* IF BCM2835 IS NOT INCIALIZED IN MAIN, THEN UNCOMMENT THIS BLOCK
     if (!bcm2835_init()) {
         fprintf(stderr, "Cannot initialize BCM2835!\n");
         return false;
     }
+    */ 
 
     // Ustaw piny jako OUTPUT
     bcm2835_gpio_fsel(GPIO_SWITCH_CHANNEL_A, BCM2835_GPIO_FSEL_OUTP);
@@ -48,7 +50,7 @@ void Audio_Cleanup(AudioRouting_t *ctx) {
     bcm2835_gpio_fsel(GPIO_SWITCH_CHANNEL_B, BCM2835_GPIO_FSEL_INPT);
     bcm2835_gpio_fsel(GPIO_SWITCH_CHANNEL_C, BCM2835_GPIO_FSEL_INPT);
     
-    bcm2835_close();  // Zamknij BCM2835
+    //bcm2835_close(); IF NOT CALLED IN MAIN, THEN UNCOMMENT THIS BLOCK
     
     if (ctx) ctx->initialized = false;
 }
