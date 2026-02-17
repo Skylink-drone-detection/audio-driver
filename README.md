@@ -28,3 +28,9 @@ szybkiego zapisu informacji.
 Dane są umieszczane przez proces pobierający w buforze pierścieniowym
 w indeksie `head`.
 
+### Odpalanie dokumentacji
+```
+cd docs/html
+python3 -m http.server 8090
+http://localhost:8090/files.html
+```
