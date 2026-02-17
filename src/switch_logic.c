@@ -1,4 +1,4 @@
-#include <gpiod.h>
+#include <wiringPi.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -17,8 +17,7 @@ typedef enum {
 
 /* Context structure to maintain the GPIO connection handle */
 typedef struct {
-    struct gpiod_chip *chip;
-    struct gpiod_line_request *request;
+    bool initialized;
 } AudioRouting_t;
 
 
@@ -27,18 +26,20 @@ typedef struct {
  * @return true on success.
  */
 bool Audio_Init(AudioRouting_t *ctx) {
-    /* Raspberry Pi 5 uses gpiochip4 for the 40-pin header */
-    ctx->chip = gpiod_chip_open_by_name("/dev/gpiochip4");
-    if (!ctx->chip) return false;
+    if (wiringPiSetupGpio() == -1) {
+        fprintf(stderr, "Cannot initialize WiringPi!\n");
+        return false;
+    }
 
-    unsigned int pins[] = {GPIO_SWITCH_CHANNEL_A , GPIO_SWITCH_CHANNEL_B , GPIO_SWITCH_CHANNEL_C };
+    int pins[] = {GPIO_SWITCH_CHANNEL_A, GPIO_SWITCH_CHANNEL_B, GPIO_SWITCH_CHANNEL_C};
 
-    /* Request 3 lines as outputs initialized to LOW (Low-Pass) [cite: 197] */
-    ctx->request = gpiod_chip_request_lines(ctx->chip, NULL, 
-        gpiod_line_config_new_ext(pins, 3, 
-        gpiod_line_settings_new_ext(GPIOD_LINE_DIRECTION_OUTPUT, 0)));
 
-    return (ctx->request != NULL);
+    for (int i = 0; i < 3; i++) {
+        pinMode(pins[i], OUTPUT);
+        digitalWrite(pins[i], LOW); 
+    }
+    if (ctx) ctx->initialized = true;
+    return true;
 }
 
 
@@ -46,16 +47,11 @@ bool Audio_Init(AudioRouting_t *ctx) {
  * @brief Sets the signal path for all channels atomically.
  */
 void Audio_SetFilters(AudioRouting_t *ctx, FilterMode_t chA, FilterMode_t chB, FilterMode_t chC) {
-    if (!ctx || !ctx->request) return;
+    if (!ctx || !ctx->initialized) return;
 
-    enum gpiod_line_value values[] = {
-        (chA) ? GPIOD_LINE_VALUE_ACTIVE : GPIOD_LINE_VALUE_INACTIVE,
-        (chB) ? GPIOD_LINE_VALUE_ACTIVE : GPIOD_LINE_VALUE_INACTIVE,
-        (chC) ? GPIOD_LINE_VALUE_ACTIVE : GPIOD_LINE_VALUE_INACTIVE
-    };
-
-    /* Update hardware switches simultaneously  */
-    gpiod_line_request_set_values(ctx->request, values);
+    digitalWrite(GPIO_SWITCH_CHANNEL_A, (chA == FILTER_LOW_PASS) ? HIGH : LOW);
+    digitalWrite(GPIO_SWITCH_CHANNEL_B, (chB == FILTER_LOW_PASS) ? HIGH : LOW);
+    digitalWrite(GPIO_SWITCH_CHANNEL_C, (chC == FILTER_LOW_PASS) ? HIGH : LOW);
 }
 
 
@@ -63,7 +59,11 @@ void Audio_SetFilters(AudioRouting_t *ctx, FilterMode_t chA, FilterMode_t chB, F
  * @brief Releases GPIO hardware resources.
  */
 void Audio_Cleanup(AudioRouting_t *ctx) {
-    if (ctx->request) gpiod_line_request_release(ctx->request);
-    if (ctx->chip) gpiod_chip_close(ctx->chip);
+    int pins[] = {GPIO_SWITCH_CHANNEL_A, GPIO_SWITCH_CHANNEL_B, GPIO_SWITCH_CHANNEL_C};
+    for (int i = 0; i < 3; i++) {
+        pinMode(pins[i], INPUT);
+    }
+    
+    if (ctx) ctx->initialized = false;
 }
 
