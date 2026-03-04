@@ -80,6 +80,6 @@ void mcp4011_set_all(uint8_t position){
 }
 
 // Obliczanie oporu wipera
-inline [[__nodiscard__]] float mcp4011_get_r_wiper(uint8_t pot_num){
+inline float mcp4011_get_r_wiper(uint8_t pot_num){
     return WIPER_RESISTANCE(pots[pot_num].r_ab, pots[pot_num].current_wiper_pos);
 }
