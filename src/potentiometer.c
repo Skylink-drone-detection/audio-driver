@@ -1,10 +1,10 @@
 #include "potentiometer.h"
 
 // Definicje stałych (brakujące)
-#define NUM_POTS 8
-#define CS_GPIO  4
-#define INC_GPIO 17
-#define UD_BASE  24
+constexpr uint8_t NUM_POTS = 8
+constexpr uint8_t CS_GPIO  = 4
+constexpr uint8_t INC_GPIO = 17
+constexpr uint8_t UD_BASE  = 24
 
 // Globalna tablica potencjometrów (przeniesiona z .h)
 static mcp4011_t pots[NUM_POTS];
@@ -40,20 +40,17 @@ void mcp4011_init_all(void){
     gpio_set(INC_GPIO, HIGH);
     
     // Inicjalizuj 8 potencjometrów (10kΩ)
-    for (uint8_t i = 0; i < NUM_POTS; ++i){
+    for(register uint8_t i = 0; i < NUM_POTS; ++i)
         mcp4011_init_single(&pots[i], CS_GPIO, UD_BASE + i, R_AB_3);
-    }
 }
 
 void mcp4011_set_position(uint8_t pot_num, uint8_t position){
-    if (pot_num >= NUM_POTS || position > 63) {
-        return;
-    }
+    if (pot_num >= NUM_POTS || position > 63) return;
     
     mcp4011_t *pot = &pots[pot_num];
     uint8_t current = pot->current_wiper_pos;
     
-    if (current == position) return; 
+    if(current == position) return; 
     
     uint8_t steps = (position > current) ? (position - current) : (current - position);
     
@@ -63,7 +60,7 @@ void mcp4011_set_position(uint8_t pot_num, uint8_t position){
     // 2. CS LOW (aktywacja)
     gpio_set(pot->cs_pin, LOW);
     
-    for(uint8_t i = 0; i < steps; ++i){
+    for(register uint8_t i = 0; i < steps; ++i){
         gpio_set(INC_GPIO, LOW);     // ↓ 10μs
         bcm2835_delayMicroseconds(10);
         gpio_set(INC_GPIO, HIGH);    // ↑
@@ -78,12 +75,11 @@ void mcp4011_set_position(uint8_t pot_num, uint8_t position){
 
 // Ustaw wszystkie na tę samą pozycję
 void mcp4011_set_all(uint8_t position){
-    for(int i = 0; i < NUM_POTS; ++i){
+    for(register int i = 0; i < NUM_POTS; ++i)
         mcp4011_set_position(i, position);
-    }
 }
 
 // Obliczanie oporu wipera
-float mcp4011_get_r_wiper(uint8_t pot_num){
+inline [[__nodiscard__]] float mcp4011_get_r_wiper(uint8_t pot_num){
     return WIPER_RESISTANCE(pots[pot_num].r_ab, pots[pot_num].current_wiper_pos);
 }

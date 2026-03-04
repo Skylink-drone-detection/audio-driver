@@ -2,46 +2,45 @@
 
 
 #define TEST_SHM_NAME "/shm_writer_test"
-#define TEST_ITERATIONS 128 // 2*BUFFER_SIZE
+constexpr uint8_t TEST_ITERATIONS = 128 // 2*BUFFER_SIZE
 
 int main(void) {
-	SharedBuffer *buffer = NULL;
+	SharedBuffer *buffer = nullptr;
 
-	printf("Initializing shared memory buffer.\n");
-	if (shm_initialize(TEST_SHM_NAME, &buffer) != 0) {
+	(void) printf("Initializing shared memory buffer.\n");
+	if(shm_initialize(TEST_SHM_NAME, &buffer) != 0){
 		fprintf(stderr, "Failed to initialize shared memory buffer\n");
 		return 1;
 	}
 
-	for (int i = 0; i < TEST_ITERATIONS; i++) {
+	for(register int i = 0; i < TEST_ITERATIONS; i++){
 		float data[ARRAY_SIZE];
-		for (int j = 0; j < ARRAY_SIZE; j++) {
+		for(register int j = 0; j < ARRAY_SIZE; j++)
 			data[j] = (float)(i * 10 + j);
-		}
 
-		if (shm_write(buffer, data) != 0) {
+		if (shm_write(buffer, data) != 0){
 			fprintf(stderr, "Write failed at iteration %d\n", i);
 			shm_cleanup(TEST_SHM_NAME, buffer);
 			return 1;
 		}
 
-		printf("Wrote iteration %d: ", i);
-		for (int j = 0; j < ARRAY_SIZE; j++) {
-			printf("%.1f ", data[j]);
-		}
-		printf("\n");
+		(void) printf("Wrote iteration %d: ", i);
+		for(register int j = 0; j < ARRAY_SIZE; j++)
+			(void) printf("%.1f ", data[j]);
+
+		(void) printf("\n");
 	}
 
-	printf("Testing data integrity (manual check).\n");
+	(void) printf("Testing data integrity (manual check).\n");
 	uint32_t head = atomic_load(&buffer->head);
 	uint32_t tail = atomic_load(&buffer->tail);
 
-	printf("Head = %u, Tail = %u\n", head, tail);
+	(void) printf("Head = %u, Tail = %u\n", head, tail);
 
-	printf("Cleaning up shared memory.\n");
+	(void) printf("Cleaning up shared memory.\n");
 	shm_cleanup(TEST_SHM_NAME, buffer);
-	printf("Test complete.\n");
+	(void) printf("Test complete.\n");
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 

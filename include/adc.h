@@ -1,24 +1,18 @@
-/*
- * MCP3564 ADC Program for Raspberry Pi
- * Requirements: libbcm2835 (sudo apt-get install libbcm2835-dev)
- * Compilation: gcc -o mcp3564 mcp3564.c -lbcm2835
- * Run with: sudo ./mcp3564
- */
 #ifndef ADC_H
-#define ADC_H
+#define ADC_H 1
 
 #include "libraries.h"
 #include "pins.h"
 
 // MCP3564 register addresses
-#define REG_ADCCONFIG   (0x01)
-#define REG_ADCSTATUS   (0x02)
-#define REG_ADCDATA     (0x03)
-#define REG_SCAN        (0x04)
-#define REG_CONFIG0     (0x05)
-#define REG_CONFIG1     (0x06)
-#define REG_CONFIG2     (0x07)
-#define REG_CONFIG3     (0x08)
+constexpr uint8_t REG_ADCCONFIG = 1;
+constexpr uint8_t REG_ADCSTATUS = 2;
+constexpr uint8_t REG_ADCDATA   = 3;
+constexpr uint8_t REG_SCAN      = 4;
+constexpr uint8_t REG_CONFIG0   = 5;
+constexpr uint8_t REG_CONFIG1   = 6;
+constexpr uint8_t REG_CONFIG2   = 7;
+constexpr uint8_t REG_CONFIG3   = 8;
 
 void cs_low(void);
 void cs_high(void);

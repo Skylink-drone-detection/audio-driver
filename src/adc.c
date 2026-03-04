@@ -1,11 +1,11 @@
 #include "adc.h"
 
 // SPI helper functions (manual CS control)
-void cs_low(void){
+inline void cs_low(void){
     bcm2835_gpio_write(SPI_CS, LOW);   // CS = 0 -> device selected
 }
 
-void cs_high(void){
+inline void cs_high(void){
     bcm2835_gpio_write(SPI_CS, HIGH);  // CS = 1 -> deselected
 }
 

@@ -3,15 +3,15 @@
 */
 
 #ifndef SHM_WRITER_H
-#define SHM_WRITER_H
+#define SHM_WRITER_H 1
 
 #include "libraries.h"
 #include "pins.h"
 
 #define SHM_NAME ("/mic_ring_buffer")
-#define WRITE_FREQ (8000)
-#define BUFFER_SIZE (800)
-#define ARRAY_SIZE (8)
+constexpr uint16_t WRITE_FREQ = 8000;
+constexpr uint16_t BUFFER_SIZE = 800;
+constexpr uint8_t ARRAY_SIZE = 8;
 
 // Ring Buffer shared between processes
 typedef struct {

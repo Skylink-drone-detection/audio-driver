@@ -19,13 +19,13 @@ int main(void){
     // Demo: Sweep 0→63→0
     while(true){
         // ↑ 0→63
-        for(uint8_t pos = 0; pos <= 63; pos += 4){
+        for(register uint8_t pos = 0; pos <= 63; pos += 4){
             mcp4011_set_all(pos);
             usleep(200000);  // 200ms/step
         }
         
         // ↓ 63→0
-        for(uint8_t pos = 63; pos > 0; pos -= 4){
+        for(register uint8_t pos = 63; pos > 0; pos -= 4){
             mcp4011_set_all(pos);
             usleep(200000);
         }

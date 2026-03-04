@@ -1,9 +1,8 @@
 #ifndef POTENTIOMETER_H
-#define POTENTIOMETER_H
+#define POTENTIOMETER_H 1
 
 #include "libraries.h"
 #include "pins.h"
-
 
 /***********************************************************************************
                 PIN FUNCTION TABLE
@@ -24,16 +23,16 @@ Legend: TTL = TTL compatible input
         O   = Ouput
 ************************************************************************************/
 
-#define NUMBER_OF_PINS ((uint8_t) 8)
+constexpr uint8_t NUMBER_OF_PINS = 8;
 
-#define PIN_NUMBER_1   ((uint8_t) 1)
-#define PIN_NUMBER_2   ((uint8_t) 2)
-#define PIN_NUMBER_3   ((uint8_t) 3)
-#define PIN_NUMBER_4   ((uint8_t) 4)
-#define PIN_NUMBER_5   ((uint8_t) 5)
-#define PIN_NUMBER_6   ((uint8_t) 6)
-#define PIN_NUMBER_7   ((uint8_t) 7)
-#define PIN_NUMBER_8   ((uint8_t) 8)
+constexpr uint8_t PIN_NUMBER_1   = 1;
+constexpr uint8_t PIN_NUMBER_2   = 2;
+constexpr uint8_t PIN_NUMBER_3   = 3;
+constexpr uint8_t PIN_NUMBER_4   = 4;
+constexpr uint8_t PIN_NUMBER_5   = 5;
+constexpr uint8_t PIN_NUMBER_6   = 6;
+constexpr uint8_t PIN_NUMBER_7   = 7;
+constexpr uint8_t PIN_NUMBER_8   = 8;
 
 enum pins : uint8_t {
     V_DD = PIN_NUMBER_1,
@@ -47,18 +46,18 @@ enum pins : uint8_t {
 };
 
 // V_DD is relative to V_SS and can range from 1.8V to 5.5v
-#define MINIMUM_V_DD   ((float) 1.8f) 
-#define MAXIMUM_V_DD   ((float) 5.5f)
+constexpr float MINIMUM_V_DD = 1.8f; 
+constexpr float MAXIMUM_V_DD = 5.5f;
 
 // Nominal resistances R_AB
-#define R_AB_1         ((float) 2.1f)   // 2.1 kΩ
-#define R_AB_2         ((float) 5.0f)   // 5.0 kΩ
-#define R_AB_3         ((float) 10.0f)  // 10 kΩ  
-#define R_AB_4         ((float) 50.0f)  // 50 kΩ
+constexpr float R_AB_1 = 2.1f;   // 2.1 kΩ
+constexpr float R_AB_2 = 5.0f;   // 5.0 kΩ
+constexpr float R_AB_3 = 10.0f;  // 10 kΩ  
+constexpr float R_AB_4 = 50.0f;  // 50 kΩ
 
 // 63 resistors = 64 positions (0-63)
-#define NUMBER_OF_RESISTORS          ((uint8_t) 63)
-#define NUMBER_OF_POSSIBLE_SETTINGS  ((uint8_t) NUMBER_OF_RESISTORS + 1)
+constexpr uint8_t NUMBER_OF_RESISTORS = 63;
+constexpr uint8_t NUMBER_OF_POSSIBLE_SETTINGS = NUMBER_OF_RESISTORS + 1;
 
 // Step resistance: R_S = R_AB / 63
 #define STEP_RESISTANCE(r_ab) ((r_ab) / 63.0f)
@@ -67,14 +66,14 @@ enum pins : uint8_t {
 #define WIPER_RESISTANCE(r_ab, n) ((r_ab * (n)) / 63.0f)
 
 // Signal tolerance up to 12.5V
-#define MAXIMUM_TOLERANCE_SIGNAL ((float) 12.5f)
+constexpr float MAXIMUM_TOLERANCE_SIGNAL = 12.5f;
 
 // COMPLETED TODOs z datasheet
-#define CS_V_IH   ((float) 2.0f)   // Logic HIGH min
-#define CS_V_IL   ((float) 0.8f)   // Logic LOW max
-#define V_TP      ((float) 1.5f)   // BOR trip point
+constexpr float CS_V_IH = 2.0f;   // Logic HIGH min
+constexpr float CS_V_IL = 0.8f;   // Logic LOW max
+constexpr float V_TP    = 1.5f;   // BOR trip point
 
-#define POR_WIPER_MID ((uint8_t) 0x1F) // 31/63 = 50% mid-scale (z tabeli)
+constexpr uint8_t POR_WIPER_MID = 0x1F // 31/63 = 50% mid-scale (z tabeli)
 
 /****************************************************************************/
 
@@ -82,7 +81,7 @@ typedef struct {
     uint8_t cs_pin;
     uint8_t ud_pin;
     uint8_t current_wiper_pos;  // 0-63
-    float r_ab;                 // wartość R_AB
+    float r_ab;                 // value R_AB
 } mcp4011_t;
 
 

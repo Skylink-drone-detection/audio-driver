@@ -1,10 +1,10 @@
 #include "../include/switch_logic.h"
 
-/**
- * @brief Initializes the BCM2835 library and GPIO pins.
- * @return true on success.
+/*
+ * Initializes the BCM2835 library and GPIO pins.
+ * return true on success.
  */
-bool Audio_Init(AudioRouting_t *ctx) {
+bool Audio_Init(AudioRouting_t *ctx){
     /* IF BCM2835 IS NOT INCIALIZED IN MAIN, THEN UNCOMMENT THIS BLOCK
     if (!bcm2835_init()) {
         fprintf(stderr, "Cannot initialize BCM2835!\n");
@@ -22,12 +22,12 @@ bool Audio_Init(AudioRouting_t *ctx) {
     bcm2835_gpio_clr(GPIO_SWITCH_CHANNEL_B);
     bcm2835_gpio_clr(GPIO_SWITCH_CHANNEL_C);
     
-    if (ctx) ctx->initialized = true;
+    if(ctx) ctx -> initialized = true;
     return true;
 }
 
-/**
- * @brief Sets the signal path for all channels atomically.
+/*
+ * Sets the signal path for all channels atomically.
  */
 void Audio_SetFilters(AudioRouting_t *ctx, FilterMode_t chA, FilterMode_t chB, FilterMode_t chC) {
     if (!ctx || !ctx->initialized || !bcm2835_init()) return;
@@ -39,8 +39,8 @@ void Audio_SetFilters(AudioRouting_t *ctx, FilterMode_t chA, FilterMode_t chB, F
     bcm2835_gpio_write(GPIO_SWITCH_CHANNEL_C, chC);
 }
 
-/**
- * @brief Releases GPIO hardware resources.
+/*
+ * Releases GPIO hardware resources.
  */
 void Audio_Cleanup(AudioRouting_t *ctx) {
     if (!ctx || !ctx->initialized) return;
@@ -52,5 +52,5 @@ void Audio_Cleanup(AudioRouting_t *ctx) {
     
     //bcm2835_close(); IF NOT CALLED IN MAIN, THEN UNCOMMENT THIS BLOCK
     
-    if (ctx) ctx->initialized = false;
+    if (ctx) ctx -> initialized = false;
 }
