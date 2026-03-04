@@ -73,7 +73,7 @@ constexpr float CS_V_IH = 2.0f;   // Logic HIGH min
 constexpr float CS_V_IL = 0.8f;   // Logic LOW max
 constexpr float V_TP    = 1.5f;   // BOR trip point
 
-constexpr uint8_t POR_WIPER_MID = 0x1F // 31/63 = 50% mid-scale (z tabeli)
+constexpr uint8_t POR_WIPER_MID = 31; // 31/63 = 50% mid-scale (z tabeli)
 
 /****************************************************************************/
 
