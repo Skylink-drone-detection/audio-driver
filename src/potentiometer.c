@@ -1,10 +1,10 @@
 #include "potentiometer.h"
 
 // Definicje stałych (brakujące)
-constexpr uint8_t NUM_POTS = 8
-constexpr uint8_t CS_GPIO  = 4
-constexpr uint8_t INC_GPIO = 17
-constexpr uint8_t UD_BASE  = 24
+constexpr uint8_t NUM_POTS = 8;
+constexpr uint8_t CS_GPIO  = 4;
+constexpr uint8_t INC_GPIO = 17;
+constexpr uint8_t UD_BASE  = 24;
 
 // Globalna tablica potencjometrów (przeniesiona z .h)
 static mcp4011_t pots[NUM_POTS];
