@@ -2,7 +2,7 @@
 
 
 #define TEST_SHM_NAME "/shm_writer_test"
-constexpr uint8_t TEST_ITERATIONS = 128 // 2*BUFFER_SIZE
+constexpr uint8_t TEST_ITERATIONS = 128; // 2*BUFFER_SIZE
 
 int main(void) {
 	SharedBuffer *buffer = nullptr;
