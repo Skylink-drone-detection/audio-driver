@@ -26,6 +26,6 @@
 #define GPIO_CS8 ((uint8_t) 24)
 
 // ADC SPI chip select on CE1 (BCM GPIO 7, header pin 26)
-#define SPI_CS ((uint8_t) RPI_GPIO_P1_26)
+#define SPI_CS ((uint8_t) 7)
 
 #endif

@@ -14,6 +14,7 @@
 #include <stdatomic.h>
 #include <sys/mman.h>
 #include <fcntl.h>
-#include <bcm2835.h>  
+
+#include "hardware.h"
 
 #endif

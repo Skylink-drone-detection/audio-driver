@@ -11,8 +11,7 @@ static mcp4011_t pots[NUM_POTS];
 
 // GPIO helpers - ZMIENIONE na bcm2835
 void gpio_set(uint8_t gpio, uint8_t value){
-    bcm2835_gpio_fsel(gpio, BCM2835_GPIO_FSEL_OUTP);
-    bcm2835_gpio_write(gpio, value);
+    gpio_write_output(gpio, value);
 }
 
 // Inicjalizacja pojedynczego MCP4011
@@ -28,16 +27,9 @@ void mcp4011_init_single(mcp4011_t *pot, uint8_t cs, uint8_t ud, float r_ab_valu
 
 // Inicjalizacja wszystkich 8 potencjometrów
 void mcp4011_init_all(void){
-    /* IF BCM2835 IS NOT INCIALIZED IN MAIN, THEN UNCOMMENT THIS BLOCK
-    if (!bcm2835_init()) {
-        fprintf(stderr, "Cannot initialize BCM2835!\n");
-        return false;
-    }
-    */ 
-    
     // Wspólne piny
-    gpio_set(CS_GPIO, HIGH);
-    gpio_set(INC_GPIO, HIGH);
+    gpio_request_output(CS_GPIO, HIGH);
+    gpio_request_output(INC_GPIO, HIGH);
     
     // Inicjalizuj 8 potencjometrów (10kΩ)
     for (uint8_t i = 0; i < NUM_POTS; ++i){
@@ -65,9 +57,9 @@ void mcp4011_set_position(uint8_t pot_num, uint8_t position){
     
     for(uint8_t i = 0; i < steps; ++i){
         gpio_set(INC_GPIO, LOW);     // ↓ 10μs
-        bcm2835_delayMicroseconds(10);
+        hardware_delay_us(10);
         gpio_set(INC_GPIO, HIGH);    // ↑
-        bcm2835_delayMicroseconds(10);
+        hardware_delay_us(10);
     }
     
     // 4. CS HIGH (zapis)

@@ -12,11 +12,22 @@ make -j4
 Projekt składa się z punktu wejściowego **main.c**
 oraz modułów zawartych w katalogach include z implementacją w src.
 
-### Biblioteka bcm28355
+### Biblioteki systemowe
 ```
 sudo apt update
-sudo apt install libbcm2835-dev  # Dla MCP3564
+sudo apt install libgpiod-dev
 sudo apt install cmake build-essential git
+```
+
+### GPIO i SPI
+Sterownik używa teraz:
+- `libgpiod` do GPIO
+- `spidev` do SPI (`/dev/spidev0.0` lub `/dev/spidev0.1`)
+
+Opcjonalne zmienne środowiskowe:
+```
+export AUDIO_DRIVER_GPIO_CHIP=/dev/gpiochip4
+export AUDIO_DRIVER_SPI_DEVICE=/dev/spidev0.1
 ```
 
 ### shm_reader

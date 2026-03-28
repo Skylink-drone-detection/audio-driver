@@ -1,22 +1,20 @@
 #include "adc.h"
 
-static uint8_t spi_cs_pin = SPI_CS;
-
 // SPI helper functions (manual CS control)
 void cs_low(void){
-    bcm2835_gpio_write(spi_cs_pin, LOW);   // CS = 0 -> device selected
+    (void)0;
 }
 
 void cs_high(void){
-    bcm2835_gpio_write(spi_cs_pin, HIGH);  // CS = 1 -> deselected
+    (void)0;
 }
 
 // Performs SPI transfer with CS control
 void spi_transfer(uint8_t *tx, uint8_t *rx, int len){
     if (!tx || !rx || len <= 0) return; // check null
-    cs_low();
-    bcm2835_spi_transfernb((char*)tx, (char*)rx, len);
-    cs_high();
+    if (!spi_transfer_bytes(tx, rx, (size_t)len)) {
+        memset(rx, 0, (size_t)len);
+    }
 }
 
 // Functions for MCP3564 communication
@@ -54,42 +52,11 @@ int32_t read_data(void){
 
 
 bool init_raspberry_pi_spi(uint8_t cs_pin, uint32_t clock_divider){
-    /* IF BCM2835 IS NOT INCIALIZED IN MAIN, THEN UNCOMMENT THIS BLOCK
-    if (!bcm2835_init()) {
-        fprintf(stderr, "Cannot initialize BCM2835!\n");
-        return false;
-    }
-    */ 
-
-    if (!bcm2835_spi_begin()) {
-        fprintf(stderr, "Cannot initialize SPI0 via bcm2835_spi_begin()\n");
-        return false;
-    }
-
-    spi_cs_pin = cs_pin;
-
-    // SPI Configuration
-    bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);
-    bcm2835_spi_setDataMode(BCM2835_SPI_MODE0); // Set SPI mode to 0
-    
-    // Set SPI clock speed
-    bcm2835_spi_setClockDivider(clock_divider);
-    
-    // Disable hardware CS - we will control it manually
-    bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);
-    
-    // Configure CS pin as output
-    bcm2835_gpio_fsel(spi_cs_pin, BCM2835_GPIO_FSEL_OUTP);
-    
-    // Set CS to high state (inactive)
-    bcm2835_gpio_write(spi_cs_pin, HIGH);
-    
-    return true;
+    return spi_open_for_cs(cs_pin, clock_divider);
 }
 
 void cleanup_raspberry_pi_spi(void){
-    bcm2835_spi_end();
-    bcm2835_close();
+    spi_close();
 }
 
 
@@ -97,7 +64,7 @@ void cleanup_raspberry_pi_spi(void){
 void init_mcp3564(void){
     // 1. Enter standby mode (stop conversion during configuration)
     write_reg(REG_ADCCONFIG, 0x00);
-    bcm2835_delay(1); // short wait
+    hardware_delay_ms(1); // short wait
 
     // 2. Channel configuration: all as single-ended, gain 1
     //    (SIGN=0, GAIN=000)
