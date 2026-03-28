@@ -13,6 +13,7 @@ set(SRC_FILES
     src/hardware.c
     src/potentiometer.c        # ← ZMIENIONE z mcp4011_driver.c
     src/shm_writer.c
+    src/wav_writer.c
     src/switch_logic.c
 )
 
