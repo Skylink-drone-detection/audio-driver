@@ -99,14 +99,17 @@ int main(void){
 
 	
 	while(true) {
+        printf("1\n");
     	read_all_channels(channel_values); // Read initial values to ensure everything is working
 		++loop_counter;
 		if(shm_write(my_buffer, channel_values) != 0){ // Write ADC values to shared memory for other processes to read
 			fprintf(stderr, "Error writing to SHM\n");
 			break; 
 		}
+        printf("2\n");
 
 		if (wav_enabled && wav_frames_written < wav_frames_target) {
+            printf("3\n");
 			for (uint16_t ch = 0; ch < wav_channels; ++ch) {
 				wav_frame_i16[ch] = voltage_to_pcm16(channel_values[ch]);
                 fprintf(stdout, "Data written: %d\n", wav_frame_i16[ch]);
