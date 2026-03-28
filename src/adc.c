@@ -1,12 +1,14 @@
 #include "adc.h"
 
+static uint8_t spi_cs_pin = SPI_CS;
+
 // SPI helper functions (manual CS control)
 void cs_low(void){
-    bcm2835_gpio_write(SPI_CS, LOW);   // CS = 0 -> device selected
+    bcm2835_gpio_write(spi_cs_pin, LOW);   // CS = 0 -> device selected
 }
 
 void cs_high(void){
-    bcm2835_gpio_write(SPI_CS, HIGH);  // CS = 1 -> deselected
+    bcm2835_gpio_write(spi_cs_pin, HIGH);  // CS = 1 -> deselected
 }
 
 // Performs SPI transfer with CS control
@@ -59,8 +61,14 @@ bool init_raspberry_pi_spi(uint8_t cs_pin, uint32_t clock_divider){
     }
     */ 
 
+    if (!bcm2835_spi_begin()) {
+        fprintf(stderr, "Cannot initialize SPI0 via bcm2835_spi_begin()\n");
+        return false;
+    }
+
+    spi_cs_pin = cs_pin;
+
     // SPI Configuration
-    bcm2835_spi_begin();
     bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE0); // Set SPI mode to 0
     
@@ -71,10 +79,10 @@ bool init_raspberry_pi_spi(uint8_t cs_pin, uint32_t clock_divider){
     bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);
     
     // Configure CS pin as output
-    bcm2835_gpio_fsel(cs_pin, BCM2835_GPIO_FSEL_OUTP);
+    bcm2835_gpio_fsel(spi_cs_pin, BCM2835_GPIO_FSEL_OUTP);
     
     // Set CS to high state (inactive)
-    bcm2835_gpio_write(cs_pin, HIGH);
+    bcm2835_gpio_write(spi_cs_pin, HIGH);
     
     return true;
 }

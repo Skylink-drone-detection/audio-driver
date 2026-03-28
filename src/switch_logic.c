@@ -1,4 +1,4 @@
-#include "../include/switch_logic.h"
+#include "switch_logic.h"
 
 /**
  * @brief Initializes the BCM2835 library and GPIO pins.
