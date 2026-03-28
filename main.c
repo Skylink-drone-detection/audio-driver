@@ -109,6 +109,7 @@ int main(void){
 		if (wav_enabled && wav_frames_written < wav_frames_target) {
 			for (uint16_t ch = 0; ch < wav_channels; ++ch) {
 				wav_frame_i16[ch] = voltage_to_pcm16(channel_values[ch]);
+                fprintf(stdout, "Data written: %d\n", wav_frame_i16[ch]);
 			}
 			if (!wav_writer_write_interleaved_i16(&wav, wav_frame_i16, 1U)) {
 				fprintf(stderr, "WAV write failed\n");
