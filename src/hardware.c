@@ -353,6 +353,10 @@ bool spi_open_for_cs(uint8_t cs_gpio, uint32_t clock_divider)
     uint8_t bits_per_word = SPI_BITS_PER_WORD;
     spi_speed_hz = spi_speed_from_divider(clock_divider);
 
+    fprintf(stdout,
+            "SPI init: cs_gpio=%u device=%s target_speed=%uHz\n",
+            cs_gpio, device_path, spi_speed_hz);
+
     if (ioctl(spi_fd, SPI_IOC_WR_MODE, &mode) < 0 ||
         ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &bits_per_word) < 0 ||
         ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed_hz) < 0) {
@@ -361,6 +365,10 @@ bool spi_open_for_cs(uint8_t cs_gpio, uint32_t clock_divider)
         spi_close();
         return false;
     }
+
+    fprintf(stdout,
+            "SPI configured: mode=%u bits=%u speed=%uHz\n",
+            (unsigned int)mode, (unsigned int)bits_per_word, spi_speed_hz);
 
     return true;
 }

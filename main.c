@@ -51,28 +51,34 @@ int main(void){
         fprintf(stderr, "Failed to initialize hardware layer!\n");
         goto cleanup;
     }
+	fprintf(stdout, "Hardware layer initialized\n");
 
 	if (!Audio_Init(&ctx)){ // Initialize audio context
 		fprintf(stderr, "Failed to initialize audio routing!\n");
 		goto cleanup;
 	}
+	fprintf(stdout, "Audio routing initialized\n");
 
 	Audio_SetFilters(&ctx, FILTER_LOW_PASS, FILTER_LOW_PASS, FILTER_LOW_PASS); // Default to low-pass filters
 	
 	mcp4011_init_all(); // Initialize all potentiometers
 	mcp4011_set_all(0);  // Start with all pots at position 0
+	fprintf(stdout, "Potentiometers initialized\n");
 
 	if (shm_initialize(SHM_NAME, &my_buffer) != 0) { // Initialize shared memory for inter-process communication
         fprintf(stderr, "Error initializing SHM\n");
         goto cleanup;
     }
+	fprintf(stdout, "Shared memory initialized: %s\n", SHM_NAME);
 
 	if (!init_raspberry_pi_spi(SPI_CS, BCM2835_SPI_CLOCK_DIVIDER_16)) { // Initialize SPI for ADC communication
 		fprintf(stderr, "Failed to initialize SPI\n");
         goto cleanup;
     }
+	fprintf(stdout, "SPI initialization complete\n");
 
     init_mcp3564(); // Initialize the ADC
+	fprintf(stdout, "MCP3564 initialized\n");
 
     float channel_values[8]; // Buffer to hold the ADC values for all channels
 	int16_t wav_frame_i16[4];
@@ -88,9 +94,13 @@ int main(void){
 				wav_path, wav_channels, WRITE_FREQ, wav_seconds);
 	}
 
+	uint32_t loop_counter = 0;
+	uint32_t next_log_frame = WRITE_FREQ;
+
 	
 	while(true) {
     	read_all_channels(channel_values); // Read initial values to ensure everything is working
+		++loop_counter;
 		if(shm_write(my_buffer, channel_values) != 0){ // Write ADC values to shared memory for other processes to read
 			fprintf(stderr, "Error writing to SHM\n");
 			break; 
@@ -109,6 +119,19 @@ int main(void){
 				fprintf(stdout, "WAV recording complete: %u frames\n", wav_frames_written);
 				break;
 			}
+		}
+
+		if (loop_counter >= next_log_frame) {
+			fprintf(stdout,
+				"Capture progress: frames=%u ch0=%.5fV ch1=%.5fV ch2=%.5fV ch3=%.5fV",
+				loop_counter,
+				channel_values[0], channel_values[1],
+				channel_values[2], channel_values[3]);
+			if (wav_enabled) {
+				fprintf(stdout, " wav=%u/%u", wav_frames_written, wav_frames_target);
+			}
+			fprintf(stdout, "\n");
+			next_log_frame += WRITE_FREQ;
 		}
 	}
 
